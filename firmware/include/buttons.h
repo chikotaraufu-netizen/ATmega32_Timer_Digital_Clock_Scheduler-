@@ -3,8 +3,8 @@
  * @brief Debounced button driver for SET, INCREMENT, and RESET
  *
  * Three buttons on PORTA with internal pull-ups.  Buttons are active-low
- * (pressed = logic 0).  Debouncing uses a simple delay-based approach
- * with edge detection (reports press only on falling edge).
+ * (pressed = logic 0).  Debouncing uses a fully non-blocking, tick-based
+ * approach with edge detection (reports press only on falling edge).
  */
 
 #ifndef BUTTONS_H

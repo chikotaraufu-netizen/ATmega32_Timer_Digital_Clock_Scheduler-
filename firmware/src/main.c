@@ -56,14 +56,14 @@ int main(void)
     buttons_init();     /* GPIO inputs with pull-ups   */
     usart_init();       /* 9600 baud 8N1               */
     scheduler_init();   /* LED outputs, counters reset  */
-    timer1_init();      /* Timer1 CTC → 1 Hz tick       */
+    timer1_init();      /* Timer1 CTC → 100 Hz tick     */
 
     /* Enable global interrupts – Timer1 ISR can now fire */
     sei();
 
     /* Send a startup banner */
     display_message("=== ATmega32 Digital Clock ===");
-    display_message("Timer1 CTC @ 1 Hz | USART 9600");
+    display_message("Timer1 CTC @ 100 Hz | USART 9600");
     display_message("Buttons: SET / INC / RESET");
     display_message("------------------------------");
 
