@@ -6,11 +6,11 @@
  * peripherals and modules, then enters an infinite non-blocking
  * super-loop that:
  *
- *   1. Checks for a 1-second tick from Timer1 (ISR-set flag).
- *   2. On each tick: advances the clock, updates the display,
- *      and advances the task scheduler.
- *   3. Runs any pending scheduled tasks (LED toggling/flashing).
- *   4. Polls buttons with debounce and handles time-set mode.
+ *   1. Checks for a 10 ms (100 Hz) tick from Timer1 (ISR-set flag).
+ *   2. On each 10 ms tick: advances the task scheduler.
+ *   3. Every 100 ticks (1 second), advances the clock and updates the display.
+ *   4. Runs any pending scheduled tasks (LED toggling/flashing).
+ *   5. Polls buttons with debounce and handles time-set mode.
  *
  * Design notes:
  *   - The ISR (timer.c) only sets a flag – all work happens here.
@@ -73,24 +73,33 @@ int main(void)
     /* Current time-set mode */
     set_mode_t mode = MODE_NORMAL;
 
+    /* Counter for 10ms ticks to reach 1 second */
+    uint8_t ms_ticks = 0;
+
     /* ================================================================ */
     /*  Super-loop – runs forever, non-blocking                        */
     /* ================================================================ */
     for (;;) {
 
-        /* ---- 1. Check for 1 Hz tick ---- */
+        /* ---- 1. Check for 10 ms (100 Hz) tick ---- */
         if (timer1_tick_pending()) {
 
-            if (mode == MODE_NORMAL) {
-                /* Advance clock only in normal mode */
-                clock_tick();
-            }
-
-            /* Display the current time every second */
-            display_time(clock_get_time());
-
-            /* Advance the task scheduler counters */
+            /* Advance the task scheduler counters every 10 ms */
             scheduler_tick();
+
+            /* Count 10 ms ticks up to 100 to make 1 second */
+            ms_ticks++;
+            if (ms_ticks >= 100) {
+                ms_ticks = 0;
+
+                if (mode == MODE_NORMAL) {
+                    /* Advance clock only in normal mode */
+                    clock_tick();
+                }
+
+                /* Display the current time every second */
+                display_time(clock_get_time());
+            }
         }
 
         /* ---- 2. Execute any pending scheduled tasks ---- */

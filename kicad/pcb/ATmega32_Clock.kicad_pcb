@@ -1,7 +1,6 @@
 (kicad_pcb
-  (version 20231014)
+  (version 20221018)
   (generator "pcbnew")
-  (generator_version "8.0")
   (general
     (thickness 1.6)
     (legacy_teardrops no)
@@ -44,36 +43,36 @@
     (pcbplotparams
       (layerselection 0x00010fc_ffffffff)
       (plot_on_all_layers_selection 0x0000000_00000000)
-      (disableapertmacros no)
-      (usegerberextensions yes)
-      (usegerberattributes yes)
-      (usegerberadvancedattributes yes)
-      (creategerberjobfile yes)
+      (disableapertmacros false)
+      (usegerberextensions true)
+      (usegerberattributes true)
+      (usegerberadvancedattributes true)
+      (creategerberjobfile true)
       (dashed_line_dash_ratio 12.000000)
       (dashed_line_gap_ratio 3.000000)
       (svgprecision 4)
-      (plotframeref no)
-      (viasonmask no)
+      (plotframeref false)
+      (viasonmask false)
       (mode 1)
-      (useauxorigin no)
+      (useauxorigin false)
       (hpglpennumber 1)
       (hpglpenspeed 20)
       (hpglpendiameter 15.000000)
-      (pdf_front_fp_property_popups yes)
-      (pdf_back_fp_property_popups yes)
-      (dxfpolygonmode yes)
-      (dxfimperialunits yes)
-      (dxfusepcbnewfont yes)
-      (psnegative no)
-      (psa4output no)
-      (plotreference yes)
-      (plotvalue yes)
-      (plotfptext yes)
-      (plotinvisibletext no)
-      (sketchpadsonfab no)
-      (subtractmaskfromsilk yes)
+      (pdf_front_fp_property_popups true)
+      (pdf_back_fp_property_popups true)
+      (dxfpolygonmode true)
+      (dxfimperialunits true)
+      (dxfusepcbnewfont true)
+      (psnegative false)
+      (psa4output false)
+      (plotreference true)
+      (plotvalue true)
+      (plotfptext true)
+      (plotinvisibletext false)
+      (sketchpadsonfab false)
+      (subtractmaskfromsilk true)
       (outputformat 1)
-      (mirror no)
+      (mirror false)
       (drillshape 1)
       (scaleselection 1)
       (outputdirectory "../gerber/")
@@ -102,722 +101,656 @@
   (net 19 "Net-R3-1")
   (net 20 "Net-R4-1")
 
-  ;; ============================================================
-  ;; BOARD OUTLINE - 80mm x 60mm
-  ;; ============================================================
   (gr_rect
     (start 0 0)
     (end 80 60)
-    (stroke (width 0.15) (type default))
+    (stroke (width 0.15) (type solid))
     (fill none)
     (layer "Edge.Cuts")
-    (uuid "b1000001-0000-4000-8000-000000000001")
+    (tstamp "b1000001-0000-4000-8000-000000000001")
   )
 
-  ;; ============================================================
-  ;; MOUNTING HOLES (4 corners, 3.2mm)
-  ;; ============================================================
   (gr_circle
     (center 3.5 3.5)
     (end 5.1 3.5)
-    (stroke (width 0.15) (type default))
+    (stroke (width 0.15) (type solid))
     (fill none)
     (layer "Edge.Cuts")
-    (uuid "b1000002-0000-4000-8000-000000000002")
+    (tstamp "b1000002-0000-4000-8000-000000000002")
   )
   (gr_circle
     (center 76.5 3.5)
     (end 78.1 3.5)
-    (stroke (width 0.15) (type default))
+    (stroke (width 0.15) (type solid))
     (fill none)
     (layer "Edge.Cuts")
-    (uuid "b1000003-0000-4000-8000-000000000003")
+    (tstamp "b1000003-0000-4000-8000-000000000003")
   )
   (gr_circle
     (center 3.5 56.5)
     (end 5.1 56.5)
-    (stroke (width 0.15) (type default))
+    (stroke (width 0.15) (type solid))
     (fill none)
     (layer "Edge.Cuts")
-    (uuid "b1000004-0000-4000-8000-000000000004")
+    (tstamp "b1000004-0000-4000-8000-000000000004")
   )
   (gr_circle
     (center 76.5 56.5)
     (end 78.1 56.5)
-    (stroke (width 0.15) (type default))
+    (stroke (width 0.15) (type solid))
     (fill none)
     (layer "Edge.Cuts")
-    (uuid "b1000005-0000-4000-8000-000000000005")
+    (tstamp "b1000005-0000-4000-8000-000000000005")
   )
 
-  ;; ============================================================
-  ;; SILKSCREEN LABELS
-  ;; ============================================================
 
-  ;; Board title
   (gr_text "ATmega32 Digital Clock"
     (at 40 3)
     (layer "F.SilkS")
-    (uuid "b1000010-0000-4000-8000-000000000010")
+    (tstamp "b1000010-0000-4000-8000-000000000010")
     (effects (font (size 1.5 1.5) (thickness 0.2)))
   )
 
-  ;; Component labels
   (gr_text "U1: ATmega32"
     (at 35 30)
     (layer "F.SilkS")
-    (uuid "b1000011-0000-4000-8000-000000000011")
+    (tstamp "b1000011-0000-4000-8000-000000000011")
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (gr_text "Y1: 8MHz"
     (at 18 22)
     (layer "F.SilkS")
-    (uuid "b1000012-0000-4000-8000-000000000012")
+    (tstamp "b1000012-0000-4000-8000-000000000012")
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (gr_text "C1: 22pF"
     (at 14 28)
     (layer "F.SilkS")
-    (uuid "b1000013-0000-4000-8000-000000000013")
+    (tstamp "b1000013-0000-4000-8000-000000000013")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "C2: 22pF"
     (at 22 28)
     (layer "F.SilkS")
-    (uuid "b1000014-0000-4000-8000-000000000014")
+    (tstamp "b1000014-0000-4000-8000-000000000014")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "C3: 100nF"
     (at 27 14)
     (layer "F.SilkS")
-    (uuid "b1000015-0000-4000-8000-000000000015")
+    (tstamp "b1000015-0000-4000-8000-000000000015")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "C4: 100nF"
     (at 42 14)
     (layer "F.SilkS")
-    (uuid "b1000016-0000-4000-8000-000000000016")
+    (tstamp "b1000016-0000-4000-8000-000000000016")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "SW1: RESET"
     (at 12 38)
     (layer "F.SilkS")
-    (uuid "b1000017-0000-4000-8000-000000000017")
+    (tstamp "b1000017-0000-4000-8000-000000000017")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "SW2: SET"
     (at 60 48)
     (layer "F.SilkS")
-    (uuid "b1000018-0000-4000-8000-000000000018")
+    (tstamp "b1000018-0000-4000-8000-000000000018")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "SW3: INC"
     (at 67 48)
     (layer "F.SilkS")
-    (uuid "b1000019-0000-4000-8000-000000000019")
+    (tstamp "b1000019-0000-4000-8000-000000000019")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "SW4: CLR"
     (at 74 48)
     (layer "F.SilkS")
-    (uuid "b100001a-0000-4000-8000-00000000001a")
+    (tstamp "b100001a-0000-4000-8000-00000000001a")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "D1: STATUS"
     (at 62 8)
     (layer "F.SilkS")
-    (uuid "b100001b-0000-4000-8000-00000000001b")
+    (tstamp "b100001b-0000-4000-8000-00000000001b")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "D2: TASK"
     (at 70 8)
     (layer "F.SilkS")
-    (uuid "b100001c-0000-4000-8000-00000000001c")
+    (tstamp "b100001c-0000-4000-8000-00000000001c")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "J1: USART"
     (at 72 30)
     (layer "F.SilkS")
-    (uuid "b100001d-0000-4000-8000-00000000001d")
+    (tstamp "b100001d-0000-4000-8000-00000000001d")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "J2: ISP"
     (at 8 48)
     (layer "F.SilkS")
-    (uuid "b100001e-0000-4000-8000-00000000001e")
+    (tstamp "b100001e-0000-4000-8000-00000000001e")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "R1: 10K"
     (at 8 33)
     (layer "F.SilkS")
-    (uuid "b100001f-0000-4000-8000-00000000001f")
+    (tstamp "b100001f-0000-4000-8000-00000000001f")
     (effects (font (size 0.8 0.8) (thickness 0.12)))
   )
   (gr_text "VCC"
     (at 35 8)
     (layer "F.SilkS")
-    (uuid "b1000020-0000-4000-8000-000000000020")
+    (tstamp "b1000020-0000-4000-8000-000000000020")
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (gr_text "GND"
     (at 35 52)
     (layer "F.SilkS")
-    (uuid "b1000021-0000-4000-8000-000000000021")
+    (tstamp "b1000021-0000-4000-8000-000000000021")
     (effects (font (size 1 1) (thickness 0.15)))
   )
 
-  ;; ============================================================
-  ;; FOOTPRINTS
-  ;; ============================================================
 
-  ;; ---- U1: ATmega32-16PU (DIP-40) - Center of board ----
   (footprint "Package_DIP:DIP-40_W15.24mm"
     (layer "F.Cu")
-    (uuid "f1000001-0000-4000-8000-000000000001")
+    (tstamp "f1000001-0000-4000-8000-000000000001")
     (at 35 30)
-    (property "Reference" "U1"
+    (fp_text reference "U1"
       (at 7.62 -1.27 0)
       (layer "F.SilkS")
-      (uuid "f1000001-0001-4000-8000-000000000001")
+      (tstamp "f1000001-0001-4000-8000-000000000001")
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (property "Value" "ATmega32-16PU"
+    (fp_text value "ATmega32-16PU"
       (at 7.62 51.435 0)
       (layer "F.Fab")
-      (uuid "f1000001-0002-4000-8000-000000000001")
+      (tstamp "f1000001-0002-4000-8000-000000000001")
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (property "Footprint" "Package_DIP:DIP-40_W15.24mm"
-      (at 0 0 0)
-      (layer "F.Fab")
-      (uuid "f1000001-0003-4000-8000-000000000001")
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    ;; DIP-40 outline
     (fp_rect
       (start -1.27 -0.635)
       (end 16.51 49.53)
-      (stroke (width 0.12) (type default))
+      (stroke (width 0.12) (type solid))
       (fill none)
       (layer "F.SilkS")
-      (uuid "f1000001-0010-4000-8000-000000000001")
+      (tstamp "f1000001-0010-4000-8000-000000000001")
     )
-    ;; Pin 1 marker
     (fp_circle
       (center 0 1.27)
       (end 0.5 1.27)
-      (stroke (width 0.12) (type default))
+      (stroke (width 0.12) (type solid))
       (fill none)
       (layer "F.SilkS")
-      (uuid "f1000001-0011-4000-8000-000000000001")
+      (tstamp "f1000001-0011-4000-8000-000000000001")
     )
-    ;; Pads - Left column (pins 1-20, top to bottom)
-    (pad "1" thru_hole rect (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 6 "LED_STATUS") (uuid "f1000001-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole oval (at 0 2.54 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 7 "LED_TASK") (uuid "f1000001-1002-4000-8000-000000000001"))
-    (pad "3" thru_hole oval (at 0 5.08 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1003-4000-8000-000000000001"))
-    (pad "4" thru_hole oval (at 0 7.62 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1004-4000-8000-000000000001"))
-    (pad "5" thru_hole oval (at 0 10.16 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1005-4000-8000-000000000001"))
-    (pad "6" thru_hole oval (at 0 12.7 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 13 "MOSI") (uuid "f1000001-1006-4000-8000-000000000001"))
-    (pad "7" thru_hole oval (at 0 15.24 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 14 "MISO") (uuid "f1000001-1007-4000-8000-000000000001"))
-    (pad "8" thru_hole oval (at 0 17.78 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 15 "SCK") (uuid "f1000001-1008-4000-8000-000000000001"))
-    (pad "9" thru_hole oval (at 0 20.32 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 12 "~{RESET}") (uuid "f1000001-1009-4000-8000-000000000001"))
-    (pad "10" thru_hole oval (at 0 22.86 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (uuid "f1000001-1010-4000-8000-000000000001"))
-    (pad "11" thru_hole oval (at 0 25.4 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f1000001-1011-4000-8000-000000000001"))
-    (pad "12" thru_hole oval (at 0 27.94 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 11 "XTAL2") (uuid "f1000001-1012-4000-8000-000000000001"))
-    (pad "13" thru_hole oval (at 0 30.48 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 10 "XTAL1") (uuid "f1000001-1013-4000-8000-000000000001"))
-    (pad "14" thru_hole oval (at 0 33.02 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 9 "USART_RXD") (uuid "f1000001-1014-4000-8000-000000000001"))
-    (pad "15" thru_hole oval (at 0 35.56 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 8 "USART_TXD") (uuid "f1000001-1015-4000-8000-000000000001"))
-    (pad "16" thru_hole oval (at 0 38.1 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1016-4000-8000-000000000001"))
-    (pad "17" thru_hole oval (at 0 40.64 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1017-4000-8000-000000000001"))
-    (pad "18" thru_hole oval (at 0 43.18 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1018-4000-8000-000000000001"))
-    (pad "19" thru_hole oval (at 0 45.72 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1019-4000-8000-000000000001"))
-    (pad "20" thru_hole oval (at 0 48.26 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1020-4000-8000-000000000001"))
-    ;; Right column (pins 21-40, bottom to top)
-    (pad "21" thru_hole oval (at 15.24 48.26 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1021-4000-8000-000000000001"))
-    (pad "22" thru_hole oval (at 15.24 45.72 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1022-4000-8000-000000000001"))
-    (pad "23" thru_hole oval (at 15.24 43.18 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1023-4000-8000-000000000001"))
-    (pad "24" thru_hole oval (at 15.24 40.64 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1024-4000-8000-000000000001"))
-    (pad "25" thru_hole oval (at 15.24 38.1 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1025-4000-8000-000000000001"))
-    (pad "26" thru_hole oval (at 15.24 35.56 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1026-4000-8000-000000000001"))
-    (pad "27" thru_hole oval (at 15.24 33.02 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1027-4000-8000-000000000001"))
-    (pad "28" thru_hole oval (at 15.24 30.48 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1028-4000-8000-000000000001"))
-    (pad "29" thru_hole oval (at 15.24 27.94 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1029-4000-8000-000000000001"))
-    (pad "30" thru_hole oval (at 15.24 25.4 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (uuid "f1000001-1030-4000-8000-000000000001"))
-    (pad "31" thru_hole oval (at 15.24 22.86 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f1000001-1031-4000-8000-000000000001"))
-    (pad "32" thru_hole oval (at 15.24 20.32 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (uuid "f1000001-1032-4000-8000-000000000001"))
-    (pad "33" thru_hole oval (at 15.24 17.78 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1033-4000-8000-000000000001"))
-    (pad "34" thru_hole oval (at 15.24 15.24 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1034-4000-8000-000000000001"))
-    (pad "35" thru_hole oval (at 15.24 12.7 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1035-4000-8000-000000000001"))
-    (pad "36" thru_hole oval (at 15.24 10.16 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1036-4000-8000-000000000001"))
-    (pad "37" thru_hole oval (at 15.24 7.62 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000001-1037-4000-8000-000000000001"))
-    (pad "38" thru_hole oval (at 15.24 5.08 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 5 "CLOCK_RESET") (uuid "f1000001-1038-4000-8000-000000000001"))
-    (pad "39" thru_hole oval (at 15.24 2.54 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 4 "INC_BTN") (uuid "f1000001-1039-4000-8000-000000000001"))
-    (pad "40" thru_hole oval (at 15.24 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 3 "SET_BTN") (uuid "f1000001-1040-4000-8000-000000000001"))
+    (pad "1" thru_hole rect (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 6 "LED_STATUS") (tstamp "f1000001-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole oval (at 0 2.54 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 7 "LED_TASK") (tstamp "f1000001-1002-4000-8000-000000000001"))
+    (pad "3" thru_hole oval (at 0 5.08 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1003-4000-8000-000000000001"))
+    (pad "4" thru_hole oval (at 0 7.62 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1004-4000-8000-000000000001"))
+    (pad "5" thru_hole oval (at 0 10.16 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1005-4000-8000-000000000001"))
+    (pad "6" thru_hole oval (at 0 12.7 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 13 "MOSI") (tstamp "f1000001-1006-4000-8000-000000000001"))
+    (pad "7" thru_hole oval (at 0 15.24 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 14 "MISO") (tstamp "f1000001-1007-4000-8000-000000000001"))
+    (pad "8" thru_hole oval (at 0 17.78 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 15 "SCK") (tstamp "f1000001-1008-4000-8000-000000000001"))
+    (pad "9" thru_hole oval (at 0 20.32 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 12 "~{RESET}") (tstamp "f1000001-1009-4000-8000-000000000001"))
+    (pad "10" thru_hole oval (at 0 22.86 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (tstamp "f1000001-1010-4000-8000-000000000001"))
+    (pad "11" thru_hole oval (at 0 25.4 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f1000001-1011-4000-8000-000000000001"))
+    (pad "12" thru_hole oval (at 0 27.94 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 11 "XTAL2") (tstamp "f1000001-1012-4000-8000-000000000001"))
+    (pad "13" thru_hole oval (at 0 30.48 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 10 "XTAL1") (tstamp "f1000001-1013-4000-8000-000000000001"))
+    (pad "14" thru_hole oval (at 0 33.02 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 9 "USART_RXD") (tstamp "f1000001-1014-4000-8000-000000000001"))
+    (pad "15" thru_hole oval (at 0 35.56 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 8 "USART_TXD") (tstamp "f1000001-1015-4000-8000-000000000001"))
+    (pad "16" thru_hole oval (at 0 38.1 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1016-4000-8000-000000000001"))
+    (pad "17" thru_hole oval (at 0 40.64 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1017-4000-8000-000000000001"))
+    (pad "18" thru_hole oval (at 0 43.18 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1018-4000-8000-000000000001"))
+    (pad "19" thru_hole oval (at 0 45.72 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1019-4000-8000-000000000001"))
+    (pad "20" thru_hole oval (at 0 48.26 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1020-4000-8000-000000000001"))
+    (pad "21" thru_hole oval (at 15.24 48.26 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1021-4000-8000-000000000001"))
+    (pad "22" thru_hole oval (at 15.24 45.72 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1022-4000-8000-000000000001"))
+    (pad "23" thru_hole oval (at 15.24 43.18 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1023-4000-8000-000000000001"))
+    (pad "24" thru_hole oval (at 15.24 40.64 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1024-4000-8000-000000000001"))
+    (pad "25" thru_hole oval (at 15.24 38.1 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1025-4000-8000-000000000001"))
+    (pad "26" thru_hole oval (at 15.24 35.56 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1026-4000-8000-000000000001"))
+    (pad "27" thru_hole oval (at 15.24 33.02 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1027-4000-8000-000000000001"))
+    (pad "28" thru_hole oval (at 15.24 30.48 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1028-4000-8000-000000000001"))
+    (pad "29" thru_hole oval (at 15.24 27.94 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1029-4000-8000-000000000001"))
+    (pad "30" thru_hole oval (at 15.24 25.4 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (tstamp "f1000001-1030-4000-8000-000000000001"))
+    (pad "31" thru_hole oval (at 15.24 22.86 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f1000001-1031-4000-8000-000000000001"))
+    (pad "32" thru_hole oval (at 15.24 20.32 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (tstamp "f1000001-1032-4000-8000-000000000001"))
+    (pad "33" thru_hole oval (at 15.24 17.78 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1033-4000-8000-000000000001"))
+    (pad "34" thru_hole oval (at 15.24 15.24 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1034-4000-8000-000000000001"))
+    (pad "35" thru_hole oval (at 15.24 12.7 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1035-4000-8000-000000000001"))
+    (pad "36" thru_hole oval (at 15.24 10.16 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1036-4000-8000-000000000001"))
+    (pad "37" thru_hole oval (at 15.24 7.62 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000001-1037-4000-8000-000000000001"))
+    (pad "38" thru_hole oval (at 15.24 5.08 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 5 "CLOCK_RESET") (tstamp "f1000001-1038-4000-8000-000000000001"))
+    (pad "39" thru_hole oval (at 15.24 2.54 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 4 "INC_BTN") (tstamp "f1000001-1039-4000-8000-000000000001"))
+    (pad "40" thru_hole oval (at 15.24 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 3 "SET_BTN") (tstamp "f1000001-1040-4000-8000-000000000001"))
   )
 
-  ;; ---- Y1: 8MHz Crystal - Close to XTAL pins ----
   (footprint "Crystal:Crystal_HC49-4H_Vertical"
     (layer "F.Cu")
-    (uuid "f1000002-0000-4000-8000-000000000001")
+    (tstamp "f1000002-0000-4000-8000-000000000001")
     (at 18 24)
-    (property "Reference" "Y1"
+    (fp_text reference "Y1"
       (at 0 -3 0)
       (layer "F.SilkS")
-      (uuid "f1000002-0001-4000-8000-000000000001")
+      (tstamp "f1000002-0001-4000-8000-000000000001")
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (property "Value" "8MHz"
+    (fp_text value "8MHz"
       (at 0 3 0)
       (layer "F.Fab")
-      (uuid "f1000002-0002-4000-8000-000000000001")
+      (tstamp "f1000002-0002-4000-8000-000000000001")
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (pad "1" thru_hole circle (at -2.44 0 0) (size 1.5 1.5) (drill 0.7) (layers "*.Cu" "*.Mask") (net 10 "XTAL1") (uuid "f1000002-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole circle (at 2.44 0 0) (size 1.5 1.5) (drill 0.7) (layers "*.Cu" "*.Mask") (net 11 "XTAL2") (uuid "f1000002-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at -2.44 0 0) (size 1.5 1.5) (drill 0.7) (layers "*.Cu" "*.Mask") (net 10 "XTAL1") (tstamp "f1000002-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole circle (at 2.44 0 0) (size 1.5 1.5) (drill 0.7) (layers "*.Cu" "*.Mask") (net 11 "XTAL2") (tstamp "f1000002-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- C1: 22pF Crystal Load Cap (XTAL1 side) ----
   (footprint "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
     (layer "F.Cu")
-    (uuid "f1000003-0000-4000-8000-000000000001")
+    (tstamp "f1000003-0000-4000-8000-000000000001")
     (at 14 28)
-    (property "Reference" "C1"
+    (fp_text reference "C1"
       (at 1.25 -2 0)
       (layer "F.SilkS")
-      (uuid "f1000003-0001-4000-8000-000000000001")
+      (tstamp "f1000003-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "22pF"
+    (fp_text value "22pF"
       (at 1.25 2 0)
       (layer "F.Fab")
-      (uuid "f1000003-0002-4000-8000-000000000001")
+      (tstamp "f1000003-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 10 "XTAL1") (uuid "f1000003-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole circle (at 2.5 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f1000003-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 10 "XTAL1") (tstamp "f1000003-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole circle (at 2.5 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f1000003-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- C2: 22pF Crystal Load Cap (XTAL2 side) ----
   (footprint "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
     (layer "F.Cu")
-    (uuid "f1000004-0000-4000-8000-000000000001")
+    (tstamp "f1000004-0000-4000-8000-000000000001")
     (at 22 28)
-    (property "Reference" "C2"
+    (fp_text reference "C2"
       (at 1.25 -2 0)
       (layer "F.SilkS")
-      (uuid "f1000004-0001-4000-8000-000000000001")
+      (tstamp "f1000004-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "22pF"
+    (fp_text value "22pF"
       (at 1.25 2 0)
       (layer "F.Fab")
-      (uuid "f1000004-0002-4000-8000-000000000001")
+      (tstamp "f1000004-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 11 "XTAL2") (uuid "f1000004-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole circle (at 2.5 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f1000004-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 11 "XTAL2") (tstamp "f1000004-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole circle (at 2.5 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f1000004-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- C3: 100nF VCC Decoupling Cap - Close to VCC pin ----
   (footprint "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
     (layer "F.Cu")
-    (uuid "f1000005-0000-4000-8000-000000000001")
+    (tstamp "f1000005-0000-4000-8000-000000000001")
     (at 27 14)
-    (property "Reference" "C3"
+    (fp_text reference "C3"
       (at 1.25 -2 0)
       (layer "F.SilkS")
-      (uuid "f1000005-0001-4000-8000-000000000001")
+      (tstamp "f1000005-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "100nF"
+    (fp_text value "100nF"
       (at 1.25 2 0)
       (layer "F.Fab")
-      (uuid "f1000005-0002-4000-8000-000000000001")
+      (tstamp "f1000005-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 1 "VCC") (uuid "f1000005-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole circle (at 2.5 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f1000005-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 1 "VCC") (tstamp "f1000005-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole circle (at 2.5 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f1000005-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- C4: 100nF AVCC Decoupling Cap - Close to AVCC pin ----
   (footprint "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
     (layer "F.Cu")
-    (uuid "f1000006-0000-4000-8000-000000000001")
+    (tstamp "f1000006-0000-4000-8000-000000000001")
     (at 42 14)
-    (property "Reference" "C4"
+    (fp_text reference "C4"
       (at 1.25 -2 0)
       (layer "F.SilkS")
-      (uuid "f1000006-0001-4000-8000-000000000001")
+      (tstamp "f1000006-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "100nF"
+    (fp_text value "100nF"
       (at 1.25 2 0)
       (layer "F.Fab")
-      (uuid "f1000006-0002-4000-8000-000000000001")
+      (tstamp "f1000006-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 1 "VCC") (uuid "f1000006-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole circle (at 2.5 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f1000006-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 1 "VCC") (tstamp "f1000006-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole circle (at 2.5 0 0) (size 1.4 1.4) (drill 0.7) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f1000006-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- R1: 10K Reset Pull-up Resistor ----
   (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
     (layer "F.Cu")
-    (uuid "f1000007-0000-4000-8000-000000000001")
+    (tstamp "f1000007-0000-4000-8000-000000000001")
     (at 10 34)
-    (property "Reference" "R1"
+    (fp_text reference "R1"
       (at 5.08 -2 0)
       (layer "F.SilkS")
-      (uuid "f1000007-0001-4000-8000-000000000001")
+      (tstamp "f1000007-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "10K"
+    (fp_text value "10K"
       (at 5.08 2 0)
       (layer "F.Fab")
-      (uuid "f1000007-0002-4000-8000-000000000001")
+      (tstamp "f1000007-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (uuid "f1000007-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 12 "~{RESET}") (uuid "f1000007-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (tstamp "f1000007-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 12 "~{RESET}") (tstamp "f1000007-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- SW1: Reset Push Button ----
   (footprint "Button_Switch_THT:SW_PUSH_6mm"
     (layer "F.Cu")
-    (uuid "f1000008-0000-4000-8000-000000000001")
+    (tstamp "f1000008-0000-4000-8000-000000000001")
     (at 12 40)
-    (property "Reference" "SW1"
+    (fp_text reference "SW1"
       (at 3 -4 0)
       (layer "F.SilkS")
-      (uuid "f1000008-0001-4000-8000-000000000001")
+      (tstamp "f1000008-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "RESET"
+    (fp_text value "RESET"
       (at 3 4 0)
       (layer "F.Fab")
-      (uuid "f1000008-0002-4000-8000-000000000001")
+      (tstamp "f1000008-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 12 "~{RESET}") (uuid "f1000008-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole circle (at 6.5 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f1000008-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 12 "~{RESET}") (tstamp "f1000008-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole circle (at 6.5 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f1000008-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- R2: 10K SET Button Pull-up ----
   (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
     (layer "F.Cu")
-    (uuid "f1000009-0000-4000-8000-000000000001")
+    (tstamp "f1000009-0000-4000-8000-000000000001")
     (at 56 42)
-    (property "Reference" "R2"
+    (fp_text reference "R2"
       (at 5.08 -2 0)
       (layer "F.SilkS")
-      (uuid "f1000009-0001-4000-8000-000000000001")
+      (tstamp "f1000009-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "10K"
+    (fp_text value "10K"
       (at 5.08 2 0)
       (layer "F.Fab")
-      (uuid "f1000009-0002-4000-8000-000000000001")
+      (tstamp "f1000009-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (uuid "f1000009-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 18 "Net-R2-1") (uuid "f1000009-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (tstamp "f1000009-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 18 "Net-R2-1") (tstamp "f1000009-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- SW2: SET Push Button ----
   (footprint "Button_Switch_THT:SW_PUSH_6mm"
     (layer "F.Cu")
-    (uuid "f100000a-0000-4000-8000-000000000001")
+    (tstamp "f100000a-0000-4000-8000-000000000001")
     (at 58 50)
-    (property "Reference" "SW2"
+    (fp_text reference "SW2"
       (at 3 -4 0)
       (layer "F.SilkS")
-      (uuid "f100000a-0001-4000-8000-000000000001")
+      (tstamp "f100000a-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "SET"
+    (fp_text value "SET"
       (at 3 4 0)
       (layer "F.Fab")
-      (uuid "f100000a-0002-4000-8000-000000000001")
+      (tstamp "f100000a-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 3 "SET_BTN") (uuid "f100000a-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole circle (at 6.5 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f100000a-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 3 "SET_BTN") (tstamp "f100000a-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole circle (at 6.5 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f100000a-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- R3: 10K INCREMENT Button Pull-up ----
   (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
     (layer "F.Cu")
-    (uuid "f100000b-0000-4000-8000-000000000001")
+    (tstamp "f100000b-0000-4000-8000-000000000001")
     (at 63 42)
-    (property "Reference" "R3"
+    (fp_text reference "R3"
       (at 5.08 -2 0)
       (layer "F.SilkS")
-      (uuid "f100000b-0001-4000-8000-000000000001")
+      (tstamp "f100000b-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "10K"
+    (fp_text value "10K"
       (at 5.08 2 0)
       (layer "F.Fab")
-      (uuid "f100000b-0002-4000-8000-000000000001")
+      (tstamp "f100000b-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (uuid "f100000b-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 19 "Net-R3-1") (uuid "f100000b-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (tstamp "f100000b-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 19 "Net-R3-1") (tstamp "f100000b-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- SW3: INCREMENT Push Button ----
   (footprint "Button_Switch_THT:SW_PUSH_6mm"
     (layer "F.Cu")
-    (uuid "f100000c-0000-4000-8000-000000000001")
+    (tstamp "f100000c-0000-4000-8000-000000000001")
     (at 65 50)
-    (property "Reference" "SW3"
+    (fp_text reference "SW3"
       (at 3 -4 0)
       (layer "F.SilkS")
-      (uuid "f100000c-0001-4000-8000-000000000001")
+      (tstamp "f100000c-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "INCREMENT"
+    (fp_text value "INCREMENT"
       (at 3 4 0)
       (layer "F.Fab")
-      (uuid "f100000c-0002-4000-8000-000000000001")
+      (tstamp "f100000c-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 4 "INC_BTN") (uuid "f100000c-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole circle (at 6.5 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f100000c-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 4 "INC_BTN") (tstamp "f100000c-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole circle (at 6.5 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f100000c-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- R4: 10K CLOCK_RESET Button Pull-up ----
   (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
     (layer "F.Cu")
-    (uuid "f100000d-0000-4000-8000-000000000001")
+    (tstamp "f100000d-0000-4000-8000-000000000001")
     (at 70 42)
-    (property "Reference" "R4"
+    (fp_text reference "R4"
       (at 5.08 -2 0)
       (layer "F.SilkS")
-      (uuid "f100000d-0001-4000-8000-000000000001")
+      (tstamp "f100000d-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "10K"
+    (fp_text value "10K"
       (at 5.08 2 0)
       (layer "F.Fab")
-      (uuid "f100000d-0002-4000-8000-000000000001")
+      (tstamp "f100000d-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (uuid "f100000d-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 20 "Net-R4-1") (uuid "f100000d-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 1 "VCC") (tstamp "f100000d-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 20 "Net-R4-1") (tstamp "f100000d-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- SW4: CLOCK_RESET Push Button ----
   (footprint "Button_Switch_THT:SW_PUSH_6mm"
     (layer "F.Cu")
-    (uuid "f100000e-0000-4000-8000-000000000001")
+    (tstamp "f100000e-0000-4000-8000-000000000001")
     (at 72 50)
-    (property "Reference" "SW4"
+    (fp_text reference "SW4"
       (at 3 -4 0)
       (layer "F.SilkS")
-      (uuid "f100000e-0001-4000-8000-000000000001")
+      (tstamp "f100000e-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "CLOCK_RESET"
+    (fp_text value "CLOCK_RESET"
       (at 3 4 0)
       (layer "F.Fab")
-      (uuid "f100000e-0002-4000-8000-000000000001")
+      (tstamp "f100000e-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 5 "CLOCK_RESET") (uuid "f100000e-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole circle (at 6.5 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f100000e-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 5 "CLOCK_RESET") (tstamp "f100000e-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole circle (at 6.5 0 0) (size 1.8 1.8) (drill 1.0) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f100000e-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- R5: 330R Status LED Resistor ----
   (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
     (layer "F.Cu")
-    (uuid "f100000f-0000-4000-8000-000000000001")
+    (tstamp "f100000f-0000-4000-8000-000000000001")
     (at 58 10)
-    (property "Reference" "R5"
+    (fp_text reference "R5"
       (at 5.08 -2 0)
       (layer "F.SilkS")
-      (uuid "f100000f-0001-4000-8000-000000000001")
+      (tstamp "f100000f-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "330R"
+    (fp_text value "330R"
       (at 5.08 2 0)
       (layer "F.Fab")
-      (uuid "f100000f-0002-4000-8000-000000000001")
+      (tstamp "f100000f-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 6 "LED_STATUS") (uuid "f100000f-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 16 "Net-D1-K") (uuid "f100000f-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 6 "LED_STATUS") (tstamp "f100000f-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 16 "Net-D1-K") (tstamp "f100000f-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- D1: Status LED ----
   (footprint "LED_THT:LED_D3.0mm"
     (layer "F.Cu")
-    (uuid "f1000010-0000-4000-8000-000000000001")
+    (tstamp "f1000010-0000-4000-8000-000000000001")
     (at 62 6)
-    (property "Reference" "D1"
+    (fp_text reference "D1"
       (at 0 -3 0)
       (layer "F.SilkS")
-      (uuid "f1000010-0001-4000-8000-000000000001")
+      (tstamp "f1000010-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "LED_STATUS"
+    (fp_text value "LED_STATUS"
       (at 0 3 0)
       (layer "F.Fab")
-      (uuid "f1000010-0002-4000-8000-000000000001")
+      (tstamp "f1000010-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask") (net 16 "Net-D1-K") (uuid "f1000010-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole circle (at 2.54 0 0) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f1000010-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask") (net 16 "Net-D1-K") (tstamp "f1000010-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole circle (at 2.54 0 0) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f1000010-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- R6: 330R Task LED Resistor ----
   (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
     (layer "F.Cu")
-    (uuid "f1000011-0000-4000-8000-000000000001")
+    (tstamp "f1000011-0000-4000-8000-000000000001")
     (at 66 10)
-    (property "Reference" "R6"
+    (fp_text reference "R6"
       (at 5.08 -2 0)
       (layer "F.SilkS")
-      (uuid "f1000011-0001-4000-8000-000000000001")
+      (tstamp "f1000011-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "330R"
+    (fp_text value "330R"
       (at 5.08 2 0)
       (layer "F.Fab")
-      (uuid "f1000011-0002-4000-8000-000000000001")
+      (tstamp "f1000011-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 7 "LED_TASK") (uuid "f1000011-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 17 "Net-D2-K") (uuid "f1000011-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 7 "LED_TASK") (tstamp "f1000011-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole oval (at 10.16 0 0) (size 1.6 1.6) (drill 0.8) (layers "*.Cu" "*.Mask") (net 17 "Net-D2-K") (tstamp "f1000011-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- D2: Task LED ----
   (footprint "LED_THT:LED_D3.0mm"
     (layer "F.Cu")
-    (uuid "f1000012-0000-4000-8000-000000000001")
+    (tstamp "f1000012-0000-4000-8000-000000000001")
     (at 70 6)
-    (property "Reference" "D2"
+    (fp_text reference "D2"
       (at 0 -3 0)
       (layer "F.SilkS")
-      (uuid "f1000012-0001-4000-8000-000000000001")
+      (tstamp "f1000012-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "LED_TASK"
+    (fp_text value "LED_TASK"
       (at 0 3 0)
       (layer "F.Fab")
-      (uuid "f1000012-0002-4000-8000-000000000001")
+      (tstamp "f1000012-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask") (net 17 "Net-D2-K") (uuid "f1000012-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole circle (at 2.54 0 0) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask") (net 2 "GND") (uuid "f1000012-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole circle (at 0 0 0) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask") (net 17 "Net-D2-K") (tstamp "f1000012-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole circle (at 2.54 0 0) (size 1.8 1.8) (drill 0.9) (layers "*.Cu" "*.Mask") (net 2 "GND") (tstamp "f1000012-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- J1: USART Header (1x2) - Board edge ----
   (footprint "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
     (layer "F.Cu")
-    (uuid "f1000013-0000-4000-8000-000000000001")
+    (tstamp "f1000013-0000-4000-8000-000000000001")
     (at 74 28)
-    (property "Reference" "J1"
+    (fp_text reference "J1"
       (at 0 -3 0)
       (layer "F.SilkS")
-      (uuid "f1000013-0001-4000-8000-000000000001")
+      (tstamp "f1000013-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "USART"
+    (fp_text value "USART"
       (at 0 5 0)
       (layer "F.Fab")
-      (uuid "f1000013-0002-4000-8000-000000000001")
+      (tstamp "f1000013-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (pad "1" thru_hole rect (at 0 0 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 8 "USART_TXD") (uuid "f1000013-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole oval (at 0 2.54 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 9 "USART_RXD") (uuid "f1000013-1002-4000-8000-000000000001"))
+    (pad "1" thru_hole rect (at 0 0 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 8 "USART_TXD") (tstamp "f1000013-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole oval (at 0 2.54 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 9 "USART_RXD") (tstamp "f1000013-1002-4000-8000-000000000001"))
   )
 
-  ;; ---- J2: ISP Programming Header (2x3) ----
   (footprint "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical"
     (layer "F.Cu")
-    (uuid "f1000014-0000-4000-8000-000000000001")
+    (tstamp "f1000014-0000-4000-8000-000000000001")
     (at 8 50)
-    (property "Reference" "J2"
+    (fp_text reference "J2"
       (at 1.27 -3 0)
       (layer "F.SilkS")
-      (uuid "f1000014-0001-4000-8000-000000000001")
+      (tstamp "f1000014-0001-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    (property "Value" "ISP"
+    (fp_text value "ISP"
       (at 1.27 8 0)
       (layer "F.Fab")
-      (uuid "f1000014-0002-4000-8000-000000000001")
+      (tstamp "f1000014-0002-4000-8000-000000000001")
       (effects (font (size 0.8 0.8) (thickness 0.12)))
     )
-    ;; Standard AVR ISP pinout: 1=MOSI, 2=VCC, 3=NC, 4=GND, 5=RST, 6=SCK
-    (pad "1" thru_hole rect (at 0 0 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 13 "MOSI") (uuid "f1000014-1001-4000-8000-000000000001"))
-    (pad "2" thru_hole oval (at 2.54 0 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 1 "VCC") (uuid "f1000014-1002-4000-8000-000000000001"))
-    (pad "3" thru_hole oval (at 0 2.54 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 0 "") (uuid "f1000014-1003-4000-8000-000000000001"))
-    (pad "4" thru_hole oval (at 2.54 2.54 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 14 "MISO") (uuid "f1000014-1004-4000-8000-000000000001"))
-    (pad "5" thru_hole oval (at 0 5.08 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 12 "~{RESET}") (uuid "f1000014-1005-4000-8000-000000000001"))
-    (pad "6" thru_hole oval (at 2.54 5.08 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 15 "SCK") (uuid "f1000014-1006-4000-8000-000000000001"))
+    (pad "1" thru_hole rect (at 0 0 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 13 "MOSI") (tstamp "f1000014-1001-4000-8000-000000000001"))
+    (pad "2" thru_hole oval (at 2.54 0 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 1 "VCC") (tstamp "f1000014-1002-4000-8000-000000000001"))
+    (pad "3" thru_hole oval (at 0 2.54 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 0 "") (tstamp "f1000014-1003-4000-8000-000000000001"))
+    (pad "4" thru_hole oval (at 2.54 2.54 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 14 "MISO") (tstamp "f1000014-1004-4000-8000-000000000001"))
+    (pad "5" thru_hole oval (at 0 5.08 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 12 "~{RESET}") (tstamp "f1000014-1005-4000-8000-000000000001"))
+    (pad "6" thru_hole oval (at 2.54 5.08 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (net 15 "SCK") (tstamp "f1000014-1006-4000-8000-000000000001"))
   )
 
-  ;; ============================================================
-  ;; TRACKS - Key signal connections
-  ;; ============================================================
 
-  ;; VCC bus (top of board)
-  (segment (start 35 22.86) (end 27 14) (width 0.5) (layer "F.Cu") (net 1) (uuid "t1000001-0000-4000-8000-000000000001"))
-  (segment (start 35 22.86) (end 42 14) (width 0.5) (layer "F.Cu") (net 1) (uuid "t1000002-0000-4000-8000-000000000001"))
+  (segment (start 35 22.86) (end 27 14) (width 0.5) (layer "F.Cu") (net 1) (tstamp "t1000001-0000-4000-8000-000000000001"))
+  (segment (start 35 22.86) (end 42 14) (width 0.5) (layer "F.Cu") (net 1) (tstamp "t1000002-0000-4000-8000-000000000001"))
 
-  ;; GND bus (bottom copper pour would handle this, but explicit traces for key connections)
-  (segment (start 35 25.4) (end 16.5 28) (width 0.5) (layer "F.Cu") (net 2) (uuid "t1000003-0000-4000-8000-000000000001"))
-  (segment (start 35 25.4) (end 24.5 28) (width 0.5) (layer "F.Cu") (net 2) (uuid "t1000004-0000-4000-8000-000000000001"))
+  (segment (start 35 25.4) (end 16.5 28) (width 0.5) (layer "F.Cu") (net 2) (tstamp "t1000003-0000-4000-8000-000000000001"))
+  (segment (start 35 25.4) (end 24.5 28) (width 0.5) (layer "F.Cu") (net 2) (tstamp "t1000004-0000-4000-8000-000000000001"))
 
-  ;; XTAL1 trace (crystal to MCU pin 13)
-  (segment (start 15.56 24) (end 35 30.48) (width 0.25) (layer "F.Cu") (net 10) (uuid "t1000005-0000-4000-8000-000000000001"))
+  (segment (start 15.56 24) (end 35 30.48) (width 0.25) (layer "F.Cu") (net 10) (tstamp "t1000005-0000-4000-8000-000000000001"))
 
-  ;; XTAL2 trace (crystal to MCU pin 12)
-  (segment (start 20.44 24) (end 35 27.94) (width 0.25) (layer "F.Cu") (net 11) (uuid "t1000006-0000-4000-8000-000000000001"))
+  (segment (start 20.44 24) (end 35 27.94) (width 0.25) (layer "F.Cu") (net 11) (tstamp "t1000006-0000-4000-8000-000000000001"))
 
-  ;; RESET trace (R1 to MCU pin 9)
-  (segment (start 20.16 34) (end 35 20.32) (width 0.25) (layer "F.Cu") (net 12) (uuid "t1000007-0000-4000-8000-000000000001"))
+  (segment (start 20.16 34) (end 35 20.32) (width 0.25) (layer "F.Cu") (net 12) (tstamp "t1000007-0000-4000-8000-000000000001"))
 
-  ;; LED_STATUS (MCU pin 1 to R5)
-  (segment (start 35 0) (end 58 10) (width 0.25) (layer "F.Cu") (net 6) (uuid "t1000008-0000-4000-8000-000000000001"))
+  (segment (start 35 0) (end 58 10) (width 0.25) (layer "F.Cu") (net 6) (tstamp "t1000008-0000-4000-8000-000000000001"))
 
-  ;; LED_TASK (MCU pin 2 to R6)
-  (segment (start 35 2.54) (end 66 10) (width 0.25) (layer "F.Cu") (net 7) (uuid "t1000009-0000-4000-8000-000000000001"))
+  (segment (start 35 2.54) (end 66 10) (width 0.25) (layer "F.Cu") (net 7) (tstamp "t1000009-0000-4000-8000-000000000001"))
 
-  ;; SET_BTN (MCU pin 40 to SW2)
-  (segment (start 50.24 0) (end 58 50) (width 0.25) (layer "B.Cu") (net 3) (uuid "t100000a-0000-4000-8000-000000000001"))
+  (segment (start 50.24 0) (end 58 50) (width 0.25) (layer "B.Cu") (net 3) (tstamp "t100000a-0000-4000-8000-000000000001"))
 
-  ;; INC_BTN (MCU pin 39 to SW3)
-  (segment (start 50.24 2.54) (end 65 50) (width 0.25) (layer "B.Cu") (net 4) (uuid "t100000b-0000-4000-8000-000000000001"))
+  (segment (start 50.24 2.54) (end 65 50) (width 0.25) (layer "B.Cu") (net 4) (tstamp "t100000b-0000-4000-8000-000000000001"))
 
-  ;; CLOCK_RESET (MCU pin 38 to SW4)
-  (segment (start 50.24 5.08) (end 72 50) (width 0.25) (layer "B.Cu") (net 5) (uuid "t100000c-0000-4000-8000-000000000001"))
+  (segment (start 50.24 5.08) (end 72 50) (width 0.25) (layer "B.Cu") (net 5) (tstamp "t100000c-0000-4000-8000-000000000001"))
 
-  ;; USART_TXD (MCU pin 15 to J1)
-  (segment (start 35 35.56) (end 74 28) (width 0.25) (layer "F.Cu") (net 8) (uuid "t100000d-0000-4000-8000-000000000001"))
+  (segment (start 35 35.56) (end 74 28) (width 0.25) (layer "F.Cu") (net 8) (tstamp "t100000d-0000-4000-8000-000000000001"))
 
-  ;; USART_RXD (MCU pin 14 to J1)
-  (segment (start 35 33.02) (end 74 30.54) (width 0.25) (layer "F.Cu") (net 9) (uuid "t100000e-0000-4000-8000-000000000001"))
+  (segment (start 35 33.02) (end 74 30.54) (width 0.25) (layer "F.Cu") (net 9) (tstamp "t100000e-0000-4000-8000-000000000001"))
 
-  ;; MOSI (MCU pin 6 to ISP J2)
-  (segment (start 35 12.7) (end 8 50) (width 0.25) (layer "B.Cu") (net 13) (uuid "t100000f-0000-4000-8000-000000000001"))
+  (segment (start 35 12.7) (end 8 50) (width 0.25) (layer "B.Cu") (net 13) (tstamp "t100000f-0000-4000-8000-000000000001"))
 
-  ;; MISO (MCU pin 7 to ISP J2)
-  (segment (start 35 15.24) (end 10.54 52.54) (width 0.25) (layer "B.Cu") (net 14) (uuid "t1000010-0000-4000-8000-000000000001"))
+  (segment (start 35 15.24) (end 10.54 52.54) (width 0.25) (layer "B.Cu") (net 14) (tstamp "t1000010-0000-4000-8000-000000000001"))
 
-  ;; SCK (MCU pin 8 to ISP J2)
-  (segment (start 35 17.78) (end 10.54 55.08) (width 0.25) (layer "B.Cu") (net 15) (uuid "t1000011-0000-4000-8000-000000000001"))
+  (segment (start 35 17.78) (end 10.54 55.08) (width 0.25) (layer "B.Cu") (net 15) (tstamp "t1000011-0000-4000-8000-000000000001"))
 
-  ;; ============================================================
-  ;; GROUND ZONE (B.Cu pour)
-  ;; ============================================================
   (zone
     (net 2)
     (net_name "GND")
     (layer "B.Cu")
-    (uuid "z1000001-0000-4000-8000-000000000001")
+    (tstamp "z1000001-0000-4000-8000-000000000001")
     (hatch edge 0.5)
     (connect_pads (clearance 0.3))
     (min_thickness 0.25)

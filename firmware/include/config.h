@@ -53,18 +53,18 @@
 
 /* ========================== Timer1 CTC Configuration =================== */
 /**
- * Goal : generate a precise 1 Hz interrupt from Timer1 in CTC mode.
+ * Goal : generate a precise 10 ms (100 Hz) interrupt from Timer1 in CTC mode.
  *
  * Calculation:
  *   f_OCR = F_CPU / (prescaler * (1 + OCR1A))
- *   1 Hz  = 8 000 000 / (1024 * (1 + OCR1A))
- *   1 + OCR1A = 8 000 000 / 1024 = 7812.5
- *   OCR1A = 7812  (truncated – yields ~1.000 s period, 0.006 % error)
+ *   100 Hz  = 8 000 000 / (64 * (1 + OCR1A))
+ *   1 + OCR1A = 8 000 000 / 6400 = 1250
+ *   OCR1A = 1249  (yields exactly 10.000 ms period)
  *
- * Prescaler bits: CS12=1, CS11=0, CS10=1  → clk/1024
+ * Prescaler bits: CS12=0, CS11=1, CS10=1  → clk/64
  */
-#define TIMER1_PRESCALER_BITS  ((1 << CS12) | (1 << CS10))
-#define TIMER1_TOP             7812U
+#define TIMER1_PRESCALER_BITS  ((1 << CS11) | (1 << CS10))
+#define TIMER1_TOP             1249U
 
 /* ========================== USART Configuration ======================== */
 /**
@@ -77,11 +77,12 @@
 
 /* ========================== Scheduler Intervals ======================== */
 /**
- * Intervals are expressed in seconds (Timer1 ISR ticks at 1 Hz).
+ * Intervals are expressed in ticks (Timer1 ISR ticks at 100 Hz / 10 ms).
  */
-#define SCHED_STATUS_LED_INTERVAL  2U   /* Toggle status LED every 2 s  */
-#define SCHED_TASK_LED_INTERVAL    5U   /* Flash task LED every 5 s     */
-#define SCHED_TASK_LED_ON_TICKS    1U   /* Task LED stays on for ~1 s   */
+#define SCHED_STATUS_LED_TICKS  200U  /* Toggle status LED every 200 ticks (2 s) */
+#define SCHED_TASK_LED_TICKS    500U  /* Flash task LED every 500 ticks (5 s)    */
+#define SCHED_TASK_LED_ON_TICKS 100U  /* Task LED stays on for 100 ticks (1 s)   */
+#define SCHED_EXT_TASK_TICKS    50U   /* Extension task every 50 ticks (500 ms)  */
 
 /* ========================== Button Debounce ============================ */
 /**

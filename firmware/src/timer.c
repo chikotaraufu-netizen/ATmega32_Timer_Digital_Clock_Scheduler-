@@ -1,16 +1,16 @@
 /**
  * @file timer.c
- * @brief Timer1 CTC mode driver – 1 Hz timekeeping for the digital clock
+ * @brief Timer1 CTC mode driver – 100 Hz timekeeping for the digital clock
  *
  * Timer1 is configured in Clear Timer on Compare (CTC) mode.  When the
  * counter reaches OCR1A it resets to 0 and fires the TIMER1_COMPA_vect
- * interrupt.  With F_CPU = 8 MHz, prescaler = 1024, and OCR1A = 7812
- * the interrupt fires at almost exactly 1 Hz.
+ * interrupt.  With F_CPU = 8 MHz, prescaler = 64, and OCR1A = 1249
+ * the interrupt fires at exactly 100 Hz (10 ms).
  *
  *   Period = (1 + OCR1A) * prescaler / F_CPU
- *          = (1 + 7812) * 1024 / 8 000 000
- *          = 7813 * 1024 / 8 000 000
- *          = 0.999 424 s   (~0.06 % fast – acceptable for a demo clock)
+ *          = (1 + 1249) * 64 / 8 000 000
+ *          = 1250 * 64 / 8 000 000
+ *          = 0.010 s   (10 ms exact)
  */
 
 #include <avr/io.h>
@@ -34,7 +34,7 @@ static clock_time_t g_clock = {0, 0, 0};
 /* ================================================================== */
 
 /**
- * TIMER1_COMPA_vect – fires every ~1 second.
+ * TIMER1_COMPA_vect – fires every 10 ms.
  *
  * The ISR does minimal work: it just sets a flag.  All heavy processing
  * (clock increment, display, scheduling) happens in the main loop,
@@ -62,8 +62,8 @@ void timer1_init(void)
     TCCR1B = (1 << WGM12);
 
     /*
-     * 2. Load the compare value for a 1 Hz period.
-     *    OCR1A = 7812 (see header comment for calculation).
+     * 2. Load the compare value for a 100 Hz period.
+     *    OCR1A = 1249 (see header comment for calculation).
      */
     OCR1A = TIMER1_TOP;
 
@@ -79,8 +79,8 @@ void timer1_init(void)
     TIMSK |= (1 << OCIE1A);
 
     /*
-     * 5. Start the timer by setting the prescaler bits (clk/1024).
-     *    CS12=1, CS11=0, CS10=1  → TCCR1B |= 0x05
+     * 5. Start the timer by setting the prescaler bits (clk/64).
+     *    CS11=1, CS10=1
      */
     TCCR1B |= TIMER1_PRESCALER_BITS;
 }
