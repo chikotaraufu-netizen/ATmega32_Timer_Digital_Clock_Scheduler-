@@ -1,0 +1,35 @@
+# Build artifacts
+firmware/hex/*.hex
+firmware/hex/*.elf
+firmware/*.o
+firmware/src/*.o
+firmware/include/*.o
+
+# KiCad generated files (keep sources, ignore auto-generated)
+kicad/**/*.bak
+kicad/**/*-backups/
+kicad/**/*.lck
+kicad/**/_autosave*
+
+# Gerber files (generated from KiCad, commit when ready for manufacture)
+# kicad/gerber/*.gbr
+# kicad/gerber/*.drl
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE / Editor
+.vscode/
+.idea/
+*.code-workspace
+
+# SimulIDE autosave
+simulide/**/*.autosave
+
+# Compiled Python files
+__pycache__/
+*.pyc
