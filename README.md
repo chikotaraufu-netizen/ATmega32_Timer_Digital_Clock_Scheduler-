@@ -323,73 +323,54 @@ Upon power-up, the clock starts at **00:00:00** and counts up. Time is displayed
 atmega32-digital-clock/
 │
 ├── README.md                              # This file
-├── Makefile                               # Build configuration
 ├── LICENSE                                # MIT License
 │
-│   ├── src/                                   # Source code
-│   ├── main.c                             # Main application entry point
-│   ├── timer.c                            # Timer1 configuration and ISR
-│   ├── timer.h                            # Timer module header
-│   ├── clock.c                            # Clock logic (HH:MM:SS)
-│   ├── clock.h                            # Clock module header
-│   ├── usart.c                            # USART driver (9600 8N1)
-│   ├── usart.h                            # USART module header
-│   ├── scheduler.c                        # Task scheduler implementation
-│   ├── scheduler.h                        # Scheduler module header
-│   ├── buttons.c                          # Button reading and debounce
-│   ├── buttons.h                          # Button module header
-│   ├── leds.c                             # LED control functions
-│   └── leds.h                             # LED module header
-│
-├── include/                               # Project-wide headers
-│   └── config.h                           # Pin definitions, F_CPU, constants
+├── firmware/                              # Firmware source and hex
+│   ├── src/                               # C Source files
+│   │   ├── main.c                         # Main application entry
+│   │   ├── timer.c                        # Timer config and ISR
+│   │   ├── display.c                      # USART output logic
+│   │   ├── scheduler.c                    # Non-blocking scheduler
+│   │   └── buttons.c                      # Button debounce logic
+│   ├── include/                           # Header files
+│   │   ├── config.h                       # Pin definitions & constants
+│   │   ├── timer.h
+│   │   ├── display.h
+│   │   ├── scheduler.h
+│   │   └── buttons.h
+│   ├── hex/
+│   │   └── main.hex                       # Compiled firmware binary
+│   └── Makefile                           # Build configuration
 │
 ├── documentation/                         # Project documentation
-│   ├── timer_configuration.md             # Timer1 CTC mode detailed setup
-│   ├── compare_match_calculation.md       # OCR1A calculation walkthrough
-│   ├── pin_mapping_table.md               # Complete ATmega32 pin mapping
+│   ├── timer_configuration.md             # Timer1 CTC mode setup
+│   ├── compare_match_calculation.md       # OCR1A calculation
+│   ├── pin_mapping_table.md               # ATmega32 pin mapping
 │   ├── test_results.md                    # Test plan and results
-│   ├── block_diagram.md                   # System block diagram (Mermaid)
-│   └── flowchart.md                       # Program flowchart (Mermaid)
+│   ├── block_diagram.md                   # System block diagram
+│   └── flowchart.md                       # Program flowchart
 │
 ├── simulide/                              # Simulation files
-│   ├── circuit/                           # Simulide circuit
+│   ├── circuit/                           # Simulide circuit docs
 │   └── screenshots/                       # Simulation screenshots
-│       └── digital_clock.pdsprj           # Proteus project file
 │
-└── build/                                 # Build output (generated)
-    ├── main.o
-    ├── main.elf
-    └── main.hex
+└── kicad/                                 # Hardware design
+    ├── schematic/                         # KiCad schematic
+    ├── pcb/                               # KiCad PCB layout
+    └── gerber/                            # Manufacturing files
 ```
 
 ---
 
 ## 📸 Screenshots
 
-### Serial Terminal Output
+### SimulIDE Simulation Running
 
-> *Screenshot placeholder: Serial terminal showing HH:MM:SS clock output with LED status messages*
+![SimulIDE Clock Operation](simulide/screenshots/simulation.png)
 
-![Serial Output](documentation/screenshots/serial_output.png)
+### KiCad PCB Layout
 
-### Hardware Setup
-
-> *Screenshot placeholder: Breadboard setup with ATmega32, LEDs, buttons, and UART adapter*
-
-![Hardware Setup](documentation/screenshots/hardware_setup.png)
-
-### Proteus Simulation
-
-> *Screenshot placeholder: SimulIDE simulation showing serial monitor and LED states*
-
-![SimulIDE Simulation](simulide/screenshots/simulation.png)
-
-### Oscilloscope Capture
-
-> *Screenshot placeholder: Timer interrupt frequency verification on oscilloscope*
-
-![Timer Verification](documentation/screenshots/timer_verification.png)
+![PCB Layout](documentation/screenshots/kicad_pcb.png)
 
 ---
 
