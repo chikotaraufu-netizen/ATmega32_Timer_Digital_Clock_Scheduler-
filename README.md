@@ -326,7 +326,7 @@ atmega32-digital-clock/
 ├── Makefile                               # Build configuration
 ├── LICENSE                                # MIT License
 │
-├── src/                                   # Source code
+│   ├── src/                                   # Source code
 │   ├── main.c                             # Main application entry point
 │   ├── timer.c                            # Timer1 configuration and ISR
 │   ├── timer.h                            # Timer module header
@@ -352,8 +352,9 @@ atmega32-digital-clock/
 │   ├── block_diagram.md                   # System block diagram (Mermaid)
 │   └── flowchart.md                       # Program flowchart (Mermaid)
 │
-├── simulation/                            # Simulation files
-│   └── proteus/                           # Proteus ISIS simulation
+├── simulide/                              # Simulation files
+│   ├── circuit/                           # Simulide circuit
+│   └── screenshots/                       # Simulation screenshots
 │       └── digital_clock.pdsprj           # Proteus project file
 │
 └── build/                                 # Build output (generated)
@@ -380,9 +381,9 @@ atmega32-digital-clock/
 
 ### Proteus Simulation
 
-> *Screenshot placeholder: Proteus ISIS simulation showing virtual terminal and LED states*
+> *Screenshot placeholder: SimulIDE simulation showing serial monitor and LED states*
 
-![Proteus Simulation](documentation/screenshots/proteus_simulation.png)
+![SimulIDE Simulation](simulide/screenshots/simulation.png)
 
 ### Oscilloscope Capture
 

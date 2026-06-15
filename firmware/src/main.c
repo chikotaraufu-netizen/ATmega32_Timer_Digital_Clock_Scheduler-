@@ -84,8 +84,9 @@ int main(void)
         /* ---- 1. Check for 10 ms (100 Hz) tick ---- */
         if (timer1_tick_pending()) {
 
-            /* Advance the task scheduler counters every 10 ms */
+            /* Advance the task scheduler and buttons every 10 ms */
             scheduler_tick();
+            buttons_tick();
 
             /* Count 10 ms ticks up to 100 to make 1 second */
             ms_ticks++;

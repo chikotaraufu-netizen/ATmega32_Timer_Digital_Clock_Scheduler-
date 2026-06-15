@@ -23,9 +23,14 @@ typedef enum {
 } button_event_t;
 
 /**
- * @brief  Initialise button GPIO pins as inputs with pull-ups enabled.
+ * @brief  Initialise button GPIO pins (enable internal pull-ups).
  */
 void buttons_init(void);
+
+/**
+ * @brief  Periodic tick for non-blocking debounce (call every 10ms).
+ */
+void buttons_tick(void);
 
 /**
  * @brief  Poll the buttons with debounce and edge detection.
