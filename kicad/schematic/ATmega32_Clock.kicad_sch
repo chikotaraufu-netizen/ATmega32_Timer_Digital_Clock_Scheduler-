@@ -8,7 +8,7 @@
     (date "2026-06-15")
     (rev "1.0")
     (company "CT_321 PBL Project 08")
-    (comment 1 "Timer1 CTC | 8MHz Crystal | Prescaler 1024 | OCR1A=7812 | 1Hz Interrupt")
+    (comment 1 "Timer1 CTC | 8MHz Crystal | Prescaler 64 | OCR1A=1249 | 100Hz Interrupt")
     (comment 2 "Status LED: PB0 toggles 2s | Task LED: PB1 flashes 5s | USART 9600")
   )
 
@@ -1076,7 +1076,7 @@
   (wire (pts (xy 121.92 73.66) (xy 121.92 76.2)) (stroke (width 0) (type default)) (uuid "a0000068-0068-4000-8000-000000000068"))
 
   ;; ============= Text annotations =============
-  (text "TIMER1 CTC: OCR1A = 8000000/(1024*1) - 1 = 7812\nInterrupt Rate: 1 Hz (1 second)\nPrescaler: 1024 | F_CPU: 8 MHz"
+  (text "TIMER1 CTC: OCR1A = 8000000/(64*1) - 1 = 1249\nInterrupt Rate: 100 Hz (10 ms)\nPrescaler: 64 | F_CPU: 8 MHz"
     (at 30.48 44.45 0) (effects (font (size 1.524 1.524)))
     (uuid "a0000070-0070-4000-8000-000000000070")
   )

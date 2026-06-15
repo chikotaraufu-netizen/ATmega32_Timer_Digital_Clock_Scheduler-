@@ -1,6 +1,6 @@
 # 🔢 Compare Match (OCR1A) Calculation
 
-> Step-by-step derivation of the Output Compare Register value for generating a precise 1 Hz interrupt on the ATmega32 Timer1.
+> Step-by-step derivation of the Output Compare Register value for generating a precise 100 Hz interrupt on the ATmega32 Timer1.
 
 ---
 
@@ -51,7 +51,7 @@ Solving for OCR1A:
 | Symbol | Parameter | Value | Unit |
 |--------|-----------|-------|------|
 | F_CPU | System clock frequency | 8,000,000 | Hz |
-| Prescaler | Timer clock divider | 1024 | — |
+| Prescaler | Timer clock divider | 64 | — |
 | f_interrupt | Desired interrupt frequency | 1 | Hz |
 | f_timer | Timer clock frequency (F_CPU / Prescaler) | 7,812.5 | Hz |
 | T_tick | Timer tick period (1 / f_timer) | 128.0 | µs |
@@ -67,7 +67,7 @@ The prescaler divides the system clock to produce the timer's input clock:
 
 ```
 f_timer = F_CPU / Prescaler
-f_timer = 8,000,000 Hz / 1024
+f_timer = 8,000,000 Hz / 64
 f_timer = 7,812.5 Hz
 ```
 
@@ -75,7 +75,7 @@ f_timer = 7,812.5 Hz
 
 ### Step 2: Calculate the Required Number of Counts
 
-For a 1 Hz interrupt (one interrupt per second), the timer must count through a specific number of ticks:
+For a 100 Hz interrupt (one interrupt per second), the timer must count through a specific number of ticks:
 
 ```
 Required counts = f_timer / f_interrupt
@@ -98,11 +98,11 @@ OCR1A = 7,811.5
 OCR1A is a 16-bit integer register — it cannot hold fractional values. We must round:
 
 ```
-OCR1A = round(7811.5)
-OCR1A = 7812    ← This is the value we program
+OCR1A = round(1249)
+OCR1A = 1249    ← This is the value we program
 ```
 
-> **Rounding choice**: We round UP from 7811.5 to 7812. This means the actual period will be slightly shorter than 1.000000s, making the clock run very slightly fast.
+> **Rounding choice**: We round UP from 1249 to 1249. This means the actual period will be slightly shorter than 1.000000s, making the clock run very slightly fast.
 
 ### Step 5: Verify the Range
 
@@ -120,7 +120,7 @@ Our value: 7,812 ✅ (well within the 16-bit range)
 ```
 ┌─────────────────────────────┐
 │                             │
-│     OCR1A = 7812            │
+│     OCR1A = 1249            │
 │     (Hex: 0x1E84)           │
 │     (Binary: 0001 1110      │
 │              1000 0100)     │
@@ -138,16 +138,16 @@ Starting from our chosen OCR1A value, verify the resulting interrupt frequency:
 
 ```
 Step 1: Total counts per cycle
-    counts = OCR1A + 1 = 7812 + 1 = 7813
+    counts = OCR1A + 1 = 1249 + 1 = 1250
 
 Step 2: Time per cycle (interrupt period)
     T_interrupt = counts × Prescaler / F_CPU
-    T_interrupt = 7813 × 1024 / 8,000,000
+    T_interrupt = 1250 × 64 / 8,000,000
     T_interrupt = 8,000,512 / 8,000,000
     T_interrupt = 1.000064 seconds
 
     Wait — let me recalculate more carefully:
-    7813 × 1024 = 7,998,512
+    1250 × 64 = 7,998,512
     T_interrupt = 7,998,512 / 8,000,000
     T_interrupt = 0.999814 seconds
 
@@ -161,7 +161,7 @@ Step 3: Actual interrupt frequency
 
 | Parameter | Ideal | Actual | Difference |
 |-----------|-------|--------|------------|
-| OCR1A | 7811.5 | 7812 | +0.5 count |
+| OCR1A | 1249 | 1249 | +0.5 count |
 | Interrupt period | 1.000000 s | 0.999814 s | −186 µs |
 | Interrupt frequency | 1.000000 Hz | 1.000186 Hz | +0.0186% |
 
@@ -207,8 +207,8 @@ Percentage error = |actual_period - ideal_period| / ideal_period × 100%
 ### What if We Chose OCR1A = 7811?
 
 ```
-T_interrupt = (7811 + 1) × 1024 / 8,000,000
-            = 7812 × 1024 / 8,000,000
+T_interrupt = (7811 + 1) × 64 / 8,000,000
+            = 1249 × 64 / 8,000,000
             = 7,999,488 / 8,000,000
             = 0.999936 seconds
 
@@ -219,24 +219,24 @@ f_actual = 1.000064 Hz
 | Choice | OCR1A | Period (s) | Error/s | Error/day |
 |--------|-------|-----------|---------|-----------|
 | Round down | 7811 | 0.999936 | −64 µs | −5.53 s |
-| **Round up** | **7812** | **0.999814** | **−186 µs** | **−16.07 s** |
-| Ideal (impossible) | 7811.5 | 1.000000 | 0 | 0 |
+| **Round up** | **1249** | **0.999814** | **−186 µs** | **−16.07 s** |
+| Ideal (impossible) | 1249 | 1.000000 | 0 | 0 |
 
-> **Observation**: OCR1A = 7811 would actually be more accurate (−64 µs vs −186 µs error). However, OCR1A = 7812 is conventionally used because it is the standard rounding of the formula result.
+> **Observation**: OCR1A = 7811 would actually be more accurate (−64 µs vs −186 µs error). However, OCR1A = 1249 is conventionally used because it is the standard rounding of the formula result.
 
 ---
 
 ## Alternative Prescaler Comparison
 
-### Full Prescaler Analysis for 1 Hz @ 8 MHz
+### Full Prescaler Analysis for 100 Hz @ 8 MHz
 
-| Prescaler | f_timer (Hz) | Exact OCR1A | Rounded OCR1A | Fits 16-bit | Error/s (µs) | Error/day (s) | Exact 1 Hz? |
+| Prescaler | f_timer (Hz) | Exact OCR1A | Rounded OCR1A | Fits 16-bit | Error/s (µs) | Error/day (s) | Exact 100 Hz? |
 |-----------|-------------|-------------|---------------|-------------|-------------|---------------|-------------|
 | 1 | 8,000,000 | 7,999,999 | 7,999,999 | ❌ No* | — | — | — |
 | 8 | 1,000,000 | 999,999 | 999,999 | ❌ No | — | — | — |
 | 64 | 125,000 | 124,999 | 124,999 | ❌ No | — | — | — |
 | 256 | 31,250.0 | 31,249.0 | **31,249** | ✅ Yes | **0.0** | **0.0** | ✅ **Yes** |
-| **1024** | **7,812.5** | **7,811.5** | **7,812** | **✅ Yes** | **−186** | **−16.07** | ❌ No |
+| **64** | **7,812.5** | **7,811.5** | **7,812** | **✅ Yes** | **−186** | **−16.07** | ❌ No |
 
 *\* Value exceeds 65,535 (16-bit maximum)*
 
@@ -254,12 +254,12 @@ T = 8,000,000 / 8,000,000
 T = 1.000000 s  ← Perfect!
 ```
 
-### Comparison: Prescaler 256 vs 1024
+### Comparison: Prescaler 256 vs 64
 
-| Aspect | Prescaler 256 | Prescaler 1024 |
+| Aspect | Prescaler 256 | Prescaler 64 |
 |--------|--------------|----------------|
 | OCR1A value | 31,249 | 7,812 |
-| Accuracy | **Exact 1 Hz** ✅ | ~1 Hz (0.0186% error) |
+| Accuracy | **Exact 100 Hz** ✅ | ~100 Hz (0.0186% error) |
 | Timer tick period | 32 µs | 128 µs |
 | Timer clock rate | 31.25 kHz | 7.8125 kHz |
 | Power consumption | Slightly higher | **Slightly lower** ✅ |
@@ -270,8 +270,8 @@ T = 1.000000 s  ← Perfect!
 
 ```mermaid
 graph TD
-    A{"Priority?"} -->|Accuracy| B["Use Prescaler 256<br/>OCR1A = 31249<br/>Error: 0%"]
-    A -->|"Power / Simplicity"| C["Use Prescaler 1024<br/>OCR1A = 7812<br/>Error: 0.0186%"]
+    A{"Priority?"} -->|Accuracy| B["Use Prescaler 256<br/>OCR1A = 1249<br/>Error: 0%"]
+    A -->|"Power / Simplicity"| C["Use Prescaler 64<br/>OCR1A = 1249<br/>Error: 0.0186%"]
     B --> D["✅ Best for production<br/>clocks and RTC"]
     C --> E["✅ Best for demos,<br/>learning, prototypes"]
 ```
@@ -280,7 +280,7 @@ graph TD
 
 ## Error Mitigation Strategies
 
-If higher accuracy is needed with prescaler 1024, several software strategies can compensate:
+If higher accuracy is needed with prescaler 64, several software strategies can compensate:
 
 ### Strategy 1: Software Compensation Counter
 
@@ -302,7 +302,7 @@ ISR(TIMER1_COMPA_vect) {
 ```c
 // Simply change to prescaler 256 for exact timing
 TCCR1B = (1 << WGM12) | (1 << CS12);  // CS12:10 = 100 → /256
-OCR1A = 31249;  // Exact 1 Hz!
+OCR1A = 1249;  // Exact 100 Hz!
 ```
 
 ### Strategy 3: External RTC Module
@@ -321,10 +321,10 @@ For mission-critical timekeeping, use an external RTC (e.g., DS3231 with ±2 ppm
 ║  Formula:  OCR1A = (F_CPU / (N × f)) − 1            ║
 ║                                                      ║
 ║  Where:    F_CPU = 8,000,000 Hz                      ║
-║            N     = 1024 (prescaler)                  ║
-║            f     = 1 Hz (desired frequency)          ║
+║            N     = 64 (prescaler)                  ║
+║            f     = 100 Hz (desired frequency)          ║
 ║                                                      ║
-║  Result:   OCR1A = 7812 (0x1E84)                     ║
+║  Result:   OCR1A = 1249 (0x1E84)                     ║
 ║                                                      ║
 ║  Actual:   f = 1.000186 Hz                           ║
 ║            T = 0.999814 s                            ║

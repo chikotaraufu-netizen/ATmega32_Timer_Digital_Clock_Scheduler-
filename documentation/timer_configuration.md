@@ -1,6 +1,6 @@
 # ⏱️ Timer1 Configuration — CTC Mode
 
-> Detailed documentation of the ATmega32 Timer1 configuration for generating a precise 1 Hz interrupt using Clear Timer on Compare Match (CTC) mode.
+> Detailed documentation of the ATmega32 Timer1 configuration for generating a precise 100 Hz interrupt using Clear Timer on Compare Match (CTC) mode.
 
 ---
 
@@ -19,7 +19,7 @@
 
 ## Overview
 
-The ATmega32's **16-bit Timer/Counter1** is configured in **CTC (Clear Timer on Compare Match) mode** to generate a precise **1 Hz interrupt signal**. This interrupt serves as the master clock tick for the digital clock and task scheduler.
+The ATmega32's **16-bit Timer/Counter1** is configured in **CTC (Clear Timer on Compare Match) mode** to generate a precise **100 Hz interrupt signal**. This interrupt serves as the master clock tick for the digital clock and task scheduler.
 
 ### Key Parameters
 
@@ -27,10 +27,10 @@ The ATmega32's **16-bit Timer/Counter1** is configured in **CTC (Clear Timer on 
 |-----------|-------|
 | System Clock (F_CPU) | 8,000,000 Hz (8 MHz) |
 | Timer Mode | CTC (Mode 4) |
-| Prescaler | 1024 |
+| Prescaler | 64 |
 | Timer Clock (f_timer) | 7,812.5 Hz |
-| OCR1A Value | 7812 |
-| Interrupt Frequency | 1.00008 Hz (≈1 Hz) |
+| OCR1A Value | 1249 |
+| Interrupt Frequency | 1.00008 Hz (≈100 Hz) |
 | Timer Resolution | 16-bit (0–65535) |
 
 ---
@@ -69,7 +69,7 @@ graph LR
 ### Timer1 Count Sequence in CTC Mode
 
 ```
-Timer Clock Ticks:  0 → 1 → 2 → 3 → ... → 7811 → 7812 → 0 → 1 → 2 → ...
+Timer Clock Ticks:  0 → 1 → 2 → 3 → ... → 7811 → 1249 → 0 → 1 → 2 → ...
                                                        ↑
                                               Compare Match!
                                               TCNT1 cleared to 0
@@ -77,7 +77,7 @@ Timer Clock Ticks:  0 → 1 → 2 → 3 → ... → 7811 → 7812 → 0 → 1 �
                                               ISR(TIMER1_COMPA_vect) fires
 ```
 
-The timer counts from **0 to 7812** (inclusive), which is **7813 timer clock ticks** per cycle.
+The timer counts from **0 to 1249** (inclusive), which is **1250 timer clock ticks** per cycle.
 
 ---
 
@@ -88,7 +88,7 @@ The timer counts from **0 to 7812** (inclusive), which is **7813 timer clock tic
 The ATmega32's system clock runs at **8 MHz** (8,000,000 ticks per second). To count 8 million ticks directly would require a counter larger than 16 bits:
 
 ```
-Without prescaler: 8,000,000 / 1 Hz = 8,000,000 counts
+Without prescaler: 8,000,000 / 100 Hz = 8,000,000 counts
 Maximum 16-bit value: 65,535 counts
 8,000,000 >> 65,535 → OVERFLOW! ❌
 ```
@@ -101,24 +101,24 @@ f_timer = F_CPU / Prescaler
 
 ### Available Prescaler Options
 
-| Prescaler | f_timer (Hz) | Counts for 1Hz | Fits 16-bit? | OCR1A Value | Exact? |
+| Prescaler | f_timer (Hz) | Counts for 100Hz | Fits 16-bit? | OCR1A Value | Exact? |
 |-----------|-------------|----------------|--------------|-------------|--------|
 | 1 | 8,000,000 | 8,000,000 | ❌ No | — | — |
 | 8 | 1,000,000 | 1,000,000 | ❌ No | — | — |
 | 64 | 125,000 | 125,000 | ❌ No | — | — |
 | 256 | 31,250 | 31,250 | ✅ Yes | 31,249 | ✅ Exact |
-| **1024** | **7,812.5** | **7,812.5** | **✅ Yes** | **7,812** | **≈ Exact** |
+| **64** | **7,812.5** | **7,812.5** | **✅ Yes** | **7,812** | **≈ Exact** |
 
-### Why Prescaler = 1024?
+### Why Prescaler = 64?
 
-Although prescaler 256 gives an exact integer count, **prescaler 1024** was chosen for this project because:
+Although prescaler 256 gives an exact integer count, **prescaler 64** was chosen for this project because:
 
 1. **Lower Counter Frequency**: The timer counts at 7,812.5 Hz instead of 31,250 Hz, reducing power consumption.
 2. **Sufficient Accuracy**: The 0.008% timing error (detailed below) is negligible for a clock display.
 3. **Larger Tick Period**: Each timer tick is ~128 µs (vs ~32 µs with 256), providing a coarser but adequate resolution.
-4. **Common Practice**: Prescaler 1024 is widely used in AVR timing applications and well-documented.
+4. **Common Practice**: Prescaler 64 is widely used in AVR timing applications and well-documented.
 
-> **Note**: For applications requiring higher precision, prescaler 256 with OCR1A = 31249 would provide an exact 1 Hz interrupt with zero error.
+> **Note**: For applications requiring higher precision, prescaler 256 with OCR1A = 1249 would provide an exact 100 Hz interrupt with zero error.
 
 ---
 
@@ -133,21 +133,21 @@ OCR1A = (F_CPU / (Prescaler × f_interrupt)) - 1
 ### Worked Calculation
 
 ```
-OCR1A = (8,000,000 / (1024 × 1)) - 1
-OCR1A = (8,000,000 / 1024) - 1
-OCR1A = 7812.5 - 1
-OCR1A = 7811.5
-OCR1A ≈ 7812  (rounded to nearest integer)
+OCR1A = (8,000,000 / (64 × 1)) - 1
+OCR1A = (8,000,000 / 64) - 1
+OCR1A = 1249.5 - 1
+OCR1A = 1249
+OCR1A ≈ 1249  (rounded to nearest integer)
 ```
 
-> Since OCR1A must be an integer, we round 7811.5 to **7812**. See [compare_match_calculation.md](compare_match_calculation.md) for the full accuracy analysis.
+> Since OCR1A must be an integer, we round 1249 to **1249**. See [compare_match_calculation.md](compare_match_calculation.md) for the full accuracy analysis.
 
 ### Verification
 
 ```
 Actual interrupt period = (OCR1A + 1) × Prescaler / F_CPU
-                        = (7812 + 1) × 1024 / 8,000,000
-                        = 7813 × 1024 / 8,000,000
+                        = (1249 + 1) × 64 / 8,000,000
+                        = 1250 × 64 / 8,000,000
                         = 7,998,512 / 8,000,000
                         = 0.999814 seconds
 
@@ -191,7 +191,7 @@ Value:   0      0      0      0      0      1      1      0      1
 | 7 | ICNC1 | 0 | Input capture noise canceler disabled |
 | 6 | ICES1 | 0 | Input capture edge select (not used) |
 | 4:3 | WGM13:12 | 01 | Waveform Generation Mode 4 (CTC, TOP = OCR1A) |
-| 2:0 | CS12:10 | 101 | Clock Select: clk_IO / 1024 (prescaler = 1024) |
+| 2:0 | CS12:10 | 101 | Clock Select: clk_IO / 64 (prescaler = 64) |
 
 **Register value: `TCCR1B = (1 << WGM12) | (1 << CS12) | (1 << CS10)` = `0x0D`**
 
@@ -213,7 +213,7 @@ Value:   0      0      0      0      0      1      1      0      1
 | 0 | 1 | 0 | clk_IO / 8 |
 | 0 | 1 | 1 | clk_IO / 64 |
 | 1 | 0 | 0 | clk_IO / 256 |
-| **1** | **0** | **1** | **clk_IO / 1024** ✅ |
+| **1** | **0** | **1** | **clk_IO / 64** ✅ |
 | 1 | 1 | 0 | External T1 pin, falling edge |
 | 1 | 1 | 1 | External T1 pin, rising edge |
 
@@ -224,7 +224,7 @@ Value:   0      0      0      0      0      1      1      0      1
 The 16-bit compare value is split across two 8-bit registers:
 
 ```
-OCR1A = 7812 = 0x1E84
+OCR1A = 1249 = 0x1E84
 
 OCR1AH = 0x1E  (high byte = 30)
 OCR1AL = 0x84  (low byte  = 132)
@@ -235,7 +235,7 @@ OCR1AL = 0x84  (low byte  = 132)
 | OCR1AH | 0x1E | 30 | High byte of compare value |
 | OCR1AL | 0x84 | 132 | Low byte of compare value |
 
-> **Important**: When writing to 16-bit registers, the high byte must be written **before** the low byte. The AVR hardware uses a temporary register to ensure atomic 16-bit writes. Using `OCR1A = 7812;` in C handles this automatically.
+> **Important**: When writing to 16-bit registers, the high byte must be written **before** the low byte. The AVR hardware uses a temporary register to ensure atomic 16-bit writes. Using `OCR1A = 1249;` in C handles this automatically.
 
 ---
 
@@ -265,7 +265,7 @@ Value:   0      0      0      1      0      0      0      0
 ```
 Time (s):   0.0     0.999814    1.999628    2.999442    3.999256
              |          |           |           |           |
-TCNT1:    [0→7812]  [0→7812]    [0→7812]    [0→7812]    [0→7812]
+TCNT1:    [0→1249]  [0→1249]    [0→1249]    [0→1249]    [0→1249]
              |    ↑     |     ↑     |     ↑     |     ↑
 ISR Fire:    | MATCH    |  MATCH    |  MATCH    |  MATCH
              |          |           |           |
@@ -297,7 +297,7 @@ Error per 24 hours:    +16.07 s
 Time for 1s drift:     5,376.3 seconds ≈ 89.6 minutes
 ```
 
-> For a demonstration/educational project, this drift is acceptable. For production applications, consider using prescaler 256 (exact 1 Hz) or an external RTC module (e.g., DS3231).
+> For a demonstration/educational project, this drift is acceptable. For production applications, consider using prescaler 256 (exact 100 Hz) or an external RTC module (e.g., DS3231).
 
 ---
 
@@ -311,7 +311,7 @@ Time for 1s drift:     5,376.3 seconds ≈ 89.6 minutes
 
 void timer1_init(void) {
     /* -----------------------------------------------
-     * Timer1 Configuration: CTC Mode, 1Hz Interrupt
+     * Timer1 Configuration: CTC Mode, 100Hz Interrupt
      * ----------------------------------------------- */
 
     // Step 1: Set CTC mode (WGM12 = 1, all others = 0)
@@ -319,14 +319,14 @@ void timer1_init(void) {
     TCCR1A = 0x00;  // COM1A/B = 00 (OC1A/B disconnected)
                      // WGM11:10 = 00
 
-    // Step 2: Set prescaler to 1024 and complete CTC mode config
-    //         CS12:10 = 101 (clk/1024)
+    // Step 2: Set prescaler to 64 and complete CTC mode config
+    //         CS12:10 = 101 (clk/64)
     //         WGM13:12 = 01 (CTC mode)
     TCCR1B = (1 << WGM12) | (1 << CS12) | (1 << CS10);
 
-    // Step 3: Set compare value for 1Hz interrupt
-    //         OCR1A = (8000000 / (1024 * 1)) - 1 ≈ 7812
-    OCR1A = 7812;
+    // Step 3: Set compare value for 100Hz interrupt
+    //         OCR1A = (8000000 / (64 * 1)) - 1 ≈ 1249
+    OCR1A = 1249;
 
     // Step 4: Reset counter to start from zero
     TCNT1 = 0;
@@ -345,7 +345,7 @@ void timer1_init(void) {
 
 ```c
 /* Volatile flags — set in ISR, read in main loop */
-volatile uint8_t tick_flag       = 0;  // 1Hz clock tick
+volatile uint8_t tick_flag       = 0;  // 100Hz clock tick
 volatile uint8_t led_status_flag = 0;  // 2s LED toggle
 volatile uint8_t led_task_flag   = 0;  // 5s LED flash
 
@@ -396,10 +396,10 @@ ISR(TIMER1_COMPA_vect) {
 | Register | Value | Binary | Purpose |
 |----------|-------|--------|---------|
 | TCCR1A | 0x00 | 0000 0000 | CTC mode, OC1A/B disconnected |
-| TCCR1B | 0x0D | 0000 1101 | CTC mode, prescaler 1024 |
+| TCCR1B | 0x0D | 0000 1101 | CTC mode, prescaler 64 |
 | OCR1AH | 0x1E | 0001 1110 | Compare value high byte |
 | OCR1AL | 0x84 | 1000 0100 | Compare value low byte |
-| OCR1A | 7812 | — | Full 16-bit compare value |
+| OCR1A | 1249 | — | Full 16-bit compare value |
 | TIMSK | bit 4 set | xxxx 1xxx | OCIE1A enabled |
 | TCNT1 | 0x0000 | Initial | Counter starts at zero |
 

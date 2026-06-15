@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](#license)
 [![Build](https://img.shields.io/badge/Build-AVR--GCC-orange.svg)](#software-requirements)
 
-> A precision digital clock and cooperative task scheduler built on the ATmega32 microcontroller, leveraging Timer1 in CTC mode for accurate 1Hz timekeeping with USART-based HH:MM:SS display and multi-task LED scheduling.
+> A precision digital clock and cooperative task scheduler built on the ATmega32 microcontroller, leveraging Timer1 in CTC mode for accurate 100Hz timekeeping with USART-based HH:MM:SS display and multi-task LED scheduling.
 
 ---
 
@@ -28,7 +28,7 @@
 
 ## 🎯 Project Overview
 
-This project implements a **real-time digital clock** and **cooperative task scheduler** on the **ATmega32** microcontroller running at **8 MHz** with an external crystal oscillator. The system uses **Timer1 in CTC (Clear Timer on Compare Match) mode** with a prescaler of 1024 and an OCR1A value of 7812 to generate a precise **1 Hz interrupt**—the heartbeat of the entire system.
+This project implements a **real-time digital clock** and **cooperative task scheduler** on the **ATmega32** microcontroller running at **8 MHz** with an external crystal oscillator. The system uses **Timer1 in CTC (Clear Timer on Compare Match) mode** with a prescaler of 64 and an OCR1A value of 1249 to generate a precise **100 Hz interrupt**—the heartbeat of the entire system.
 
 The clock displays time in **HH:MM:SS** format via the **USART interface** at 9600 baud, while the task scheduler manages two LED tasks using a **non-blocking, ISR-flag-driven architecture**:
 
@@ -43,7 +43,7 @@ Three hardware buttons provide user interaction for time setting, field incremen
 
 | Feature | Description |
 |---------|-------------|
-| **Precision Timekeeping** | Timer1 CTC mode with 1024 prescaler generates accurate 1Hz tick |
+| **Precision Timekeeping** | Timer1 CTC mode with 64 prescaler generates accurate 100Hz tick |
 | **USART Display** | Real-time HH:MM:SS output at 9600 baud (8N1) |
 | **Task Scheduler** | Cooperative, flag-based scheduler with configurable task intervals |
 | **Status LED** | Heartbeat indicator toggling every 2 seconds |
@@ -71,7 +71,7 @@ graph TB
     end
 
     subgraph Firmware["💻 Firmware Layer"]
-        TIMER["Timer1 ISR<br/>CTC @ 1Hz"]
+        TIMER["Timer1 ISR<br/>CTC @ 100Hz"]
         SCHED["Task Scheduler<br/>Flag Polling"]
         CLOCK["Clock Module<br/>HH:MM:SS"]
         BTNDRV["Button Driver<br/>Debounce + Read"]
