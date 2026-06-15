@@ -1,9 +1,9 @@
 /**
  * @file scheduler.h
- * @brief Cooperative periodic task scheduler driven by 1 Hz ticks
+ * @brief Cooperative periodic task scheduler driven by 100 Hz (10 ms) ticks
  *
- * The scheduler maintains second-resolution counters for each periodic
- * task.  On each 1 Hz tick the counters are advanced and corresponding
+ * The scheduler maintains 10ms-resolution counters for each periodic
+ * task.  On each 100 Hz tick the counters are advanced and corresponding
  * flags are set.  The main loop checks the flags and executes the tasks.
  *
  * Tasks:
@@ -23,9 +23,9 @@
 void scheduler_init(void);
 
 /**
- * @brief  Advance scheduler counters by one second.
+ * @brief  Advance scheduler counters by 10 ms.
  *
- * Call this exactly once per 1 Hz tick (inside the main loop after
+ * Call this exactly once per 100 Hz tick (inside the main loop after
  * detecting timer1_tick_pending()).  Sets internal flags when tasks
  * are due.
  */

@@ -443,11 +443,9 @@ These tests verify boundary conditions and edge cases.
 
 ## Test Screenshots
 
-### Serial Output — Normal Clock Operation
+### Digital Clock Screenshot
 
-> *Screenshot placeholder: Terminal showing sequential HH:MM:SS output*
-
-![Normal Clock Output](screenshots/test_normal_clock.png)
+![Digital Clock Running](../simulide/screenshots/simulation.png)
 
 ### Serial Output — Minute Rollover
 
@@ -466,6 +464,10 @@ These tests verify boundary conditions and edge cases.
 > *Screenshot placeholder: Oscilloscope capture showing LED toggle/flash timing*
 
 ![LED Timing](screenshots/test_led_timing.png)
+
+### Scheduled LED Tasks Screenshot
+
+![LEDs Toggling](../simulide/screenshots/simulation.png)
 
 ### Button Response Test
 
