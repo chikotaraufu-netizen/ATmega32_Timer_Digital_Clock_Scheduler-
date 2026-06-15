@@ -128,6 +128,7 @@ void scheduler_run(void)
     if (g_flag_task_led_on) {
         g_flag_task_led_on = false;
         LED_PORT |= (1 << LED_TASK);    /* Turn ON */
+        display_message("TASK: SENSOR SAMPLE");
     }
 
     /* ---- Task LED: flash OFF ---- */

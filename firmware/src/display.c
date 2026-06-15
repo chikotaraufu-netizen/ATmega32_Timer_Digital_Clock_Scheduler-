@@ -82,6 +82,7 @@ void display_time(clock_time_t t)
      * overwrite the current line; newline (\n) provides scrolling
      * on terminals that don't.
      */
+    usart_puts("TIME: ");
     usart_put_two_digits(t.hours);
     usart_putchar(':');
     usart_put_two_digits(t.minutes);
