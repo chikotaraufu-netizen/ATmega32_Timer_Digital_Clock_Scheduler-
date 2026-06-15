@@ -33,3 +33,4 @@ simulide/**/*.autosave
 # Compiled Python files
 __pycache__/
 *.pyc
+node_modules/
