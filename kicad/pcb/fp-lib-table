@@ -1,0 +1,10 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Package_DIP")(type "KiCad")(uri "${KICAD8_FOOTPRINT_DIR}/Package_DIP.pretty")(options "")(descr "DIP packages"))
+  (lib (name "Crystal")(type "KiCad")(uri "${KICAD8_FOOTPRINT_DIR}/Crystal.pretty")(options "")(descr "Crystal oscillators"))
+  (lib (name "Capacitor_THT")(type "KiCad")(uri "${KICAD8_FOOTPRINT_DIR}/Capacitor_THT.pretty")(options "")(descr "Through-hole capacitors"))
+  (lib (name "Resistor_THT")(type "KiCad")(uri "${KICAD8_FOOTPRINT_DIR}/Resistor_THT.pretty")(options "")(descr "Through-hole resistors"))
+  (lib (name "LED_THT")(type "KiCad")(uri "${KICAD8_FOOTPRINT_DIR}/LED_THT.pretty")(options "")(descr "Through-hole LEDs"))
+  (lib (name "Button_Switch_THT")(type "KiCad")(uri "${KICAD8_FOOTPRINT_DIR}/Button_Switch_THT.pretty")(options "")(descr "Through-hole buttons and switches"))
+  (lib (name "Connector_PinHeader_2.54mm")(type "KiCad")(uri "${KICAD8_FOOTPRINT_DIR}/Connector_PinHeader_2.54mm.pretty")(options "")(descr "Pin headers 2.54mm pitch"))
+)
