@@ -3,9 +3,9 @@
     "GenerationSoftware": {
       "Vendor": "KiCad",
       "Application": "Pcbnew",
-      "Version": "7.0.11+dfsg-1build4"
+      "Version": "10.0.3-10.0.3~ubuntu24.04.1"
     },
-    "CreationDate": "2026-06-15T22:03:18+03:00"
+    "CreationDate": "2026-06-16T10:42:02+03:00"
   },
   "GeneralSpecs": {
     "ProjectId": {
@@ -14,7 +14,7 @@
       "Revision": "1.0"
     },
     "Size": {
-      "X": 80.15,
+      "X": 100.15,
       "Y": 60.15
     },
     "LayerNumber": 2,
@@ -27,7 +27,6 @@
       "PadToPad": 0.2,
       "PadToTrack": 0.2,
       "TrackToTrack": 0.2,
-      "MinLineWidth": 0.25,
       "TrackToRegion": 0.3,
       "RegionToRegion": 0.3
     }
@@ -130,24 +129,29 @@
     },
     {
       "Type": "SolderMask",
+      "Thickness": 0.01,
       "Name": "Top Solder Mask"
     },
     {
       "Type": "Copper",
+      "Thickness": 0.035,
       "Name": "F.Cu"
     },
     {
       "Type": "Dielectric",
+      "Thickness": 1.51,
       "Material": "FR4",
       "Name": "F.Cu/B.Cu",
       "Notes": "Type: dielectric layer 1 (from F.Cu to B.Cu)"
     },
     {
       "Type": "Copper",
+      "Thickness": 0.035,
       "Name": "B.Cu"
     },
     {
       "Type": "SolderMask",
+      "Thickness": 0.01,
       "Name": "Bottom Solder Mask"
     },
     {

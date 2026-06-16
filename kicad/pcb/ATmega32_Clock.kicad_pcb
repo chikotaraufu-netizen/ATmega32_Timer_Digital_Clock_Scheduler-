@@ -103,7 +103,7 @@
 
   (gr_rect
     (start 0 0)
-    (end 80 60)
+    (end 100 60)
     (stroke (width 0.15) (type solid))
     (fill none)
     (layer "Edge.Cuts")
@@ -115,15 +115,15 @@
     (end 5.1 3.5)
     (stroke (width 0.15) (type solid))
     (fill none)
-    (layer "Edge.Cuts")
+    (layer "F.Fab")
     (tstamp "b1000002-0000-4000-8000-000000000002")
   )
   (gr_circle
-    (center 76.5 3.5)
-    (end 78.1 3.5)
+    (center 96.5 3.5)
+    (end 98.1 3.5)
     (stroke (width 0.15) (type solid))
     (fill none)
-    (layer "Edge.Cuts")
+    (layer "F.Fab")
     (tstamp "b1000003-0000-4000-8000-000000000003")
   )
   (gr_circle
@@ -131,15 +131,15 @@
     (end 5.1 56.5)
     (stroke (width 0.15) (type solid))
     (fill none)
-    (layer "Edge.Cuts")
+    (layer "F.Fab")
     (tstamp "b1000004-0000-4000-8000-000000000004")
   )
   (gr_circle
-    (center 76.5 56.5)
-    (end 78.1 56.5)
+    (center 96.5 56.5)
+    (end 98.1 56.5)
     (stroke (width 0.15) (type solid))
     (fill none)
-    (layer "Edge.Cuts")
+    (layer "F.Fab")
     (tstamp "b1000005-0000-4000-8000-000000000005")
   )
 
@@ -512,7 +512,7 @@
   (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
     (layer "F.Cu")
     (tstamp "f100000b-0000-4000-8000-000000000001")
-    (at 63 42)
+    (at 73 42)
     (fp_text reference "R3"
       (at 5.08 -2 0)
       (layer "F.SilkS")
@@ -532,7 +532,7 @@
   (footprint "Button_Switch_THT:SW_PUSH_6mm"
     (layer "F.Cu")
     (tstamp "f100000c-0000-4000-8000-000000000001")
-    (at 65 50)
+    (at 75 50)
     (fp_text reference "SW3"
       (at 3 -4 0)
       (layer "F.SilkS")
@@ -552,7 +552,7 @@
   (footprint "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
     (layer "F.Cu")
     (tstamp "f100000d-0000-4000-8000-000000000001")
-    (at 70 42)
+    (at 88 42)
     (fp_text reference "R4"
       (at 5.08 -2 0)
       (layer "F.SilkS")
@@ -572,7 +572,7 @@
   (footprint "Button_Switch_THT:SW_PUSH_6mm"
     (layer "F.Cu")
     (tstamp "f100000e-0000-4000-8000-000000000001")
-    (at 72 50)
+    (at 90 50)
     (fp_text reference "SW4"
       (at 3 -4 0)
       (layer "F.SilkS")
@@ -714,37 +714,9 @@
   )
 
 
-  (segment (start 35 22.86) (end 27 14) (width 0.5) (layer "F.Cu") (net 1) (tstamp "t1000001-0000-4000-8000-000000000001"))
-  (segment (start 35 22.86) (end 42 14) (width 0.5) (layer "F.Cu") (net 1) (tstamp "t1000002-0000-4000-8000-000000000001"))
 
-  (segment (start 35 25.4) (end 16.5 28) (width 0.5) (layer "F.Cu") (net 2) (tstamp "t1000003-0000-4000-8000-000000000001"))
-  (segment (start 35 25.4) (end 24.5 28) (width 0.5) (layer "F.Cu") (net 2) (tstamp "t1000004-0000-4000-8000-000000000001"))
 
-  (segment (start 15.56 24) (end 35 30.48) (width 0.25) (layer "F.Cu") (net 10) (tstamp "t1000005-0000-4000-8000-000000000001"))
 
-  (segment (start 20.44 24) (end 35 27.94) (width 0.25) (layer "F.Cu") (net 11) (tstamp "t1000006-0000-4000-8000-000000000001"))
-
-  (segment (start 20.16 34) (end 35 20.32) (width 0.25) (layer "F.Cu") (net 12) (tstamp "t1000007-0000-4000-8000-000000000001"))
-
-  (segment (start 35 0) (end 58 10) (width 0.25) (layer "F.Cu") (net 6) (tstamp "t1000008-0000-4000-8000-000000000001"))
-
-  (segment (start 35 2.54) (end 66 10) (width 0.25) (layer "F.Cu") (net 7) (tstamp "t1000009-0000-4000-8000-000000000001"))
-
-  (segment (start 50.24 0) (end 58 50) (width 0.25) (layer "B.Cu") (net 3) (tstamp "t100000a-0000-4000-8000-000000000001"))
-
-  (segment (start 50.24 2.54) (end 65 50) (width 0.25) (layer "B.Cu") (net 4) (tstamp "t100000b-0000-4000-8000-000000000001"))
-
-  (segment (start 50.24 5.08) (end 72 50) (width 0.25) (layer "B.Cu") (net 5) (tstamp "t100000c-0000-4000-8000-000000000001"))
-
-  (segment (start 35 35.56) (end 74 28) (width 0.25) (layer "F.Cu") (net 8) (tstamp "t100000d-0000-4000-8000-000000000001"))
-
-  (segment (start 35 33.02) (end 74 30.54) (width 0.25) (layer "F.Cu") (net 9) (tstamp "t100000e-0000-4000-8000-000000000001"))
-
-  (segment (start 35 12.7) (end 8 50) (width 0.25) (layer "B.Cu") (net 13) (tstamp "t100000f-0000-4000-8000-000000000001"))
-
-  (segment (start 35 15.24) (end 10.54 52.54) (width 0.25) (layer "B.Cu") (net 14) (tstamp "t1000010-0000-4000-8000-000000000001"))
-
-  (segment (start 35 17.78) (end 10.54 55.08) (width 0.25) (layer "B.Cu") (net 15) (tstamp "t1000011-0000-4000-8000-000000000001"))
 
   (zone
     (net 2)
@@ -758,10 +730,10 @@
     (fill yes (thermal_gap 0.5) (thermal_bridge_width 0.5))
     (polygon
       (pts
-        (xy 1 1)
-        (xy 79 1)
-        (xy 79 59)
-        (xy 1 59)
+        (xy -2 -2)
+        (xy 96 -2)
+        (xy 96 57)
+        (xy -2 57)
       )
     )
   )
