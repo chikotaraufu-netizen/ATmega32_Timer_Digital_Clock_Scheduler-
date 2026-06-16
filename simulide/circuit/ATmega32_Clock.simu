@@ -2,7 +2,7 @@
 
 Unique  Id: mega32-1: 
 Circuit Id: mega32-1
-<item labelx="-32" y="-180" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="MCU" mainComp="false" circRot="0" x="-200" valLabelx="0" vflip="1" Show_id="true" objectName="mega32-1" labely="-42" labelrot="0" id="mega32-1" Frequency="8000000" Program="firmware/hex/main.hex" Mhz="8" Auto_Load="false" name="mega32"/>
+<item labelx="-32" y="-180" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="MCU" mainComp="false" circRot="0" x="-200" valLabelx="0" vflip="1" Show_id="true" objectName="mega32-1" labely="-42" labelrot="0" id="mega32-1" Frequency="8000000" Program="/home/devagent/Desktop/microproj2/firmware/hex/main.hex" Mhz="8" Auto_Load="false" name="mega32"/>
 
 Unique  Id: Led-STATUS: 
 Circuit Id: LED_STATUS
@@ -34,31 +34,43 @@ Circuit Id: CLOCK_RST
 
 Unique  Id: Resistor-R2: 
 Circuit Id: R2_10k
-<item Unit=" Ω" labelx="-12" y="-80" rotation="-90" valLabRot="0" hflip="1" valLabely="6" itemtype="Resistor" mainComp="false" circRot="0" x="60" valLabelx="-16" vflip="1" Show_id="true" Show_Val="true" objectName="Resistor-R2" labely="-24" labelrot="0" Resistance="10000" id="R2_10k"/>
+<item Unit=" Ω" labelx="-12" y="-80" rotation="-90" valLabRot="0" hflip="1" valLabely="6" itemtype="Resistor" mainComp="false" circRot="0" x="50" valLabelx="-16" vflip="1" Show_id="true" Show_Val="true" objectName="Resistor-R2" labely="-24" labelrot="0" Resistance="10000" id="R2_10k"/>
 
 Unique  Id: Resistor-R4: 
 Circuit Id: R4_10k
-<item Unit=" Ω" labelx="-12" y="-48" rotation="-90" valLabRot="0" hflip="1" valLabely="6" itemtype="Resistor" mainComp="false" circRot="0" x="60" valLabelx="-16" vflip="1" Show_id="true" Show_Val="true" objectName="Resistor-R4" labely="-24" labelrot="0" Resistance="10000" id="R4_10k"/>
+<item Unit=" Ω" labelx="-12" y="-48" rotation="-90" valLabRot="0" hflip="1" valLabely="6" itemtype="Resistor" mainComp="false" circRot="0" x="50" valLabelx="-16" vflip="1" Show_id="true" Show_Val="true" objectName="Resistor-R4" labely="-24" labelrot="0" Resistance="10000" id="R4_10k"/>
 
 Unique  Id: Resistor-R6: 
 Circuit Id: R6_10k
-<item Unit=" Ω" labelx="-12" y="-16" rotation="-90" valLabRot="0" hflip="1" valLabely="6" itemtype="Resistor" mainComp="false" circRot="0" x="60" valLabelx="-16" vflip="1" Show_id="true" Show_Val="true" objectName="Resistor-R6" labely="-24" labelrot="0" Resistance="10000" id="R6_10k"/>
+<item Unit=" Ω" labelx="-12" y="-16" rotation="-90" valLabRot="0" hflip="1" valLabely="6" itemtype="Resistor" mainComp="false" circRot="0" x="50" valLabelx="-16" vflip="1" Show_id="true" Show_Val="true" objectName="Resistor-R6" labely="-24" labelrot="0" Resistance="10000" id="R6_10k"/>
 
-Unique  Id: Ground-1: 
-Circuit Id: Ground-1
-<item labelx="-16" y="80" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Ground" mainComp="false" circRot="0" x="-340" valLabelx="0" vflip="1" Show_id="false" objectName="Ground-1" labely="8" labelrot="0" id="Ground-1"/>
+Unique  Id: Ground-LED: 
+Circuit Id: Ground-LED
+<item labelx="-16" y="20" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Ground" mainComp="false" circRot="0" x="-420" valLabelx="0" vflip="1" Show_id="false" objectName="Ground-LED" labely="8" labelrot="0" id="Ground-LED"/>
 
-Unique  Id: Ground-2: 
-Circuit Id: Ground-2
-<item labelx="-16" y="40" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Ground" mainComp="false" circRot="0" x="140" valLabelx="0" vflip="1" Show_id="false" objectName="Ground-2" labely="8" labelrot="0" id="Ground-2"/>
+Unique  Id: Ground-SW2: 
+Circuit Id: Ground-SW2
+<item labelx="-16" y="-40" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Ground" mainComp="false" circRot="0" x="160" valLabelx="0" vflip="1" Show_id="false" objectName="Ground-SW2" labely="8" labelrot="0" id="Ground-SW2"/>
 
-Unique  Id: Rail-VCC: 
-Circuit Id: VCC_5V
-<item Unit=" V" labelx="-16" y="-300" rotation="0" valLabRot="0" hflip="1" valLabely="8" itemtype="Rail" mainComp="false" circRot="0" x="-200" valLabelx="-16" Show_Volt="true" vflip="1" Show_id="true" objectName="Rail-VCC" labely="-24" labelrot="0" Voltage="5" id="VCC_5V"/>
+Unique  Id: Ground-SW3: 
+Circuit Id: Ground-SW3
+<item labelx="-16" y="-8" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Ground" mainComp="false" circRot="0" x="160" valLabelx="0" vflip="1" Show_id="false" objectName="Ground-SW3" labely="8" labelrot="0" id="Ground-SW3"/>
+
+Unique  Id: Ground-SW4: 
+Circuit Id: Ground-SW4
+<item labelx="-16" y="24" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Ground" mainComp="false" circRot="0" x="160" valLabelx="0" vflip="1" Show_id="false" objectName="Ground-SW4" labely="8" labelrot="0" id="Ground-SW4"/>
+
+Unique  Id: Rail-VCC1: 
+Circuit Id: VCC_R2
+<item Unit=" V" labelx="-16" y="-108" rotation="0" valLabRot="0" hflip="1" valLabely="8" itemtype="Rail" mainComp="false" circRot="0" x="50" valLabelx="-16" Show_Volt="true" vflip="1" Show_id="false" objectName="Rail-VCC1" labely="-24" labelrot="0" Voltage="5" id="VCC_R2"/>
 
 Unique  Id: Rail-VCC2: 
-Circuit Id: VCC_Pullup
-<item Unit=" V" labelx="-16" y="-100" rotation="0" valLabRot="0" hflip="1" valLabely="8" itemtype="Rail" mainComp="false" circRot="0" x="60" valLabelx="-16" Show_Volt="true" vflip="1" Show_id="true" objectName="Rail-VCC2" labely="-24" labelrot="0" Voltage="5" id="VCC_Pullup"/>
+Circuit Id: VCC_R4
+<item Unit=" V" labelx="-16" y="-76" rotation="0" valLabRot="0" hflip="1" valLabely="8" itemtype="Rail" mainComp="false" circRot="0" x="50" valLabelx="-16" Show_Volt="true" vflip="1" Show_id="false" objectName="Rail-VCC2" labely="-24" labelrot="0" Voltage="5" id="VCC_R4"/>
+
+Unique  Id: Rail-VCC3: 
+Circuit Id: VCC_R6
+<item Unit=" V" labelx="-16" y="-44" rotation="0" valLabRot="0" hflip="1" valLabely="8" itemtype="Rail" mainComp="false" circRot="0" x="50" valLabelx="-16" Show_Volt="true" vflip="1" Show_id="false" objectName="Rail-VCC3" labely="-24" labelrot="0" Voltage="5" id="VCC_R6"/>
 
 Unique  Id: SerialMonitor-1: 
 Circuit Id: Serial_Monitor
@@ -66,23 +78,19 @@ Circuit Id: Serial_Monitor
 
 Unique  Id: Node-N1: 
 Circuit Id: Node-N1
-<item labelx="-16" y="-64" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Node" mainComp="false" circRot="0" x="60" valLabelx="0" vflip="1" Show_id="false" objectName="Node-N1" labely="-24" labelrot="0" id="Node-N1"/>
+<item labelx="-16" y="-64" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Node" mainComp="false" circRot="0" x="50" valLabelx="0" vflip="1" Show_id="false" objectName="Node-N1" labely="-24" labelrot="0" id="Node-N1"/>
 
 Unique  Id: Node-N2: 
 Circuit Id: Node-N2
-<item labelx="-16" y="-32" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Node" mainComp="false" circRot="0" x="60" valLabelx="0" vflip="1" Show_id="false" objectName="Node-N2" labely="-24" labelrot="0" id="Node-N2"/>
+<item labelx="-16" y="-32" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Node" mainComp="false" circRot="0" x="50" valLabelx="0" vflip="1" Show_id="false" objectName="Node-N2" labely="-24" labelrot="0" id="Node-N2"/>
 
 Unique  Id: Node-N3: 
 Circuit Id: Node-N3
-<item labelx="-16" y="0" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Node" mainComp="false" circRot="0" x="60" valLabelx="0" vflip="1" Show_id="false" objectName="Node-N3" labely="-24" labelrot="0" id="Node-N3"/>
+<item labelx="-16" y="0" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Node" mainComp="false" circRot="0" x="50" valLabelx="0" vflip="1" Show_id="false" objectName="Node-N3" labely="-24" labelrot="0" id="Node-N3"/>
 
-Unique  Id: Node-GND1: 
-Circuit Id: Node-GND1
-<item labelx="-16" y="60" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Node" mainComp="false" circRot="0" x="-340" valLabelx="0" vflip="1" Show_id="false" objectName="Node-GND1" labely="-24" labelrot="0" id="Node-GND1"/>
-
-Unique  Id: Node-GND2: 
-Circuit Id: Node-GND2
-<item labelx="-16" y="20" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Node" mainComp="false" circRot="0" x="140" valLabelx="0" vflip="1" Show_id="false" objectName="Node-GND2" labely="-24" labelrot="0" id="Node-GND2"/>
+Unique  Id: Node-LGND: 
+Circuit Id: Node-LGND
+<item labelx="-16" y="0" rotation="0" valLabRot="0" hflip="1" valLabely="0" itemtype="Node" mainComp="false" circRot="0" x="-420" valLabelx="0" vflip="1" Show_id="false" objectName="Node-LGND" labely="-24" labelrot="0" id="Node-LGND"/>
 
 Unique  Id: Conn-PB0-R3: 
 Circuit Id: Conn-PB0-R3
@@ -94,7 +102,7 @@ Circuit Id: Conn-R3-LED1
 
 Unique  Id: Conn-LED1-GND: 
 Circuit Id: Conn-LED1-GND
-<item labelx="-16" y="-64" rotation="0" valLabRot="0" pointList="-396,-64,-396,60,-340,60" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-3" x="-396" valLabelx="0" endpinid="Node-GND1-0" vflip="1" Show_id="false" startpinid="Led-STATUS-rPin" objectName="Conn-LED1-GND" labely="-24" labelrot="0" id="Conn-LED1-GND"/>
+<item labelx="-16" y="-64" rotation="0" valLabRot="0" pointList="-396,-64,-420,-64,-420,0" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-3" x="-396" valLabelx="0" endpinid="Node-LGND-0" vflip="1" Show_id="false" startpinid="Led-STATUS-rPin" objectName="Conn-LED1-GND" labely="-24" labelrot="0" id="Conn-LED1-GND"/>
 
 Unique  Id: Conn-PB1-R5: 
 Circuit Id: Conn-PB1-R5
@@ -106,78 +114,74 @@ Circuit Id: Conn-R5-LED2
 
 Unique  Id: Conn-LED2-GND: 
 Circuit Id: Conn-LED2-GND
-<item labelx="-16" y="-32" rotation="0" valLabRot="0" pointList="-396,-32,-396,60,-340,60" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-3" x="-396" valLabelx="0" endpinid="Node-GND1-1" vflip="1" Show_id="false" startpinid="Led-TASK-rPin" objectName="Conn-LED2-GND" labely="-24" labelrot="0" id="Conn-LED2-GND"/>
+<item labelx="-16" y="-32" rotation="0" valLabRot="0" pointList="-396,-32,-420,-32,-420,0" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-3" x="-396" valLabelx="0" endpinid="Node-LGND-1" vflip="1" Show_id="false" startpinid="Led-TASK-rPin" objectName="Conn-LED2-GND" labely="-24" labelrot="0" id="Conn-LED2-GND"/>
 
-Unique  Id: Conn-GND1-GND: 
-Circuit Id: Conn-GND1-GND
-<item labelx="-16" y="60" rotation="0" valLabRot="0" pointList="-340,60,-340,64" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-3" x="-340" valLabelx="0" endpinid="Ground-1-Gnd" vflip="1" Show_id="false" startpinid="Node-GND1-2" objectName="Conn-GND1-GND" labely="-24" labelrot="0" id="Conn-GND1-GND"/>
+Unique  Id: Conn-LGND-GND: 
+Circuit Id: Conn-LGND-GND
+<item labelx="-16" y="0" rotation="0" valLabRot="0" pointList="-420,0,-420,4" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-3" x="-420" valLabelx="0" endpinid="Ground-LED-Gnd" vflip="1" Show_id="false" startpinid="Node-LGND-2" objectName="Conn-LGND-GND" labely="-24" labelrot="0" id="Conn-LGND-GND"/>
 
 Unique  Id: Conn-PA0-N1: 
 Circuit Id: Conn-PA0-N1
-<item labelx="-16" y="-172" rotation="0" valLabRot="0" pointList="-152,-172,-152,-260,40,-260,40,-64,60,-64" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-6" x="-152" valLabelx="0" endpinid="Node-N1-0" vflip="1" Show_id="false" startpinid="mega32-1-PA0" objectName="Conn-PA0-N1" labely="-24" labelrot="0" id="Conn-PA0-N1"/>
+<item labelx="-16" y="-172" rotation="0" valLabRot="0" pointList="-152,-172,-152,-260,30,-260,30,-64,50,-64" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-6" x="-152" valLabelx="0" endpinid="Node-N1-0" vflip="1" Show_id="false" startpinid="mega32-1-PA0" objectName="Conn-PA0-N1" labely="-24" labelrot="0" id="Conn-PA0-N1"/>
 
 Unique  Id: Conn-N1-R2: 
 Circuit Id: Conn-N1-R2
-<item labelx="-16" y="-64" rotation="0" valLabRot="0" pointList="60,-64,60,-64" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-6" x="60" valLabelx="0" endpinid="Resistor-R2-rPin" vflip="1" Show_id="false" startpinid="Node-N1-1" objectName="Conn-N1-R2" labely="-24" labelrot="0" id="Conn-N1-R2"/>
+<item labelx="-16" y="-64" rotation="0" valLabRot="0" pointList="50,-64,50,-64" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-6" x="50" valLabelx="0" endpinid="Resistor-R2-rPin" vflip="1" Show_id="false" startpinid="Node-N1-1" objectName="Conn-N1-R2" labely="-24" labelrot="0" id="Conn-N1-R2"/>
 
 Unique  Id: Conn-N1-SW2: 
 Circuit Id: Conn-N1-SW2
-<item labelx="-16" y="-64" rotation="0" valLabRot="0" pointList="60,-64,84,-64" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-6" x="60" valLabelx="0" endpinid="Push-SET-pinP0" vflip="1" Show_id="false" startpinid="Node-N1-2" objectName="Conn-N1-SW2" labely="-24" labelrot="0" id="Conn-N1-SW2"/>
+<item labelx="-16" y="-64" rotation="0" valLabRot="0" pointList="50,-64,84,-64" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-6" x="50" valLabelx="0" endpinid="Push-SET-pinP0" vflip="1" Show_id="false" startpinid="Node-N1-2" objectName="Conn-N1-SW2" labely="-24" labelrot="0" id="Conn-N1-SW2"/>
 
 Unique  Id: Conn-R2-VCC: 
 Circuit Id: Conn-R2-VCC
-<item labelx="-16" y="-96" rotation="0" valLabRot="0" pointList="60,-96,60,-84" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-7" x="60" valLabelx="0" endpinid="Rail-VCC2-outnod" vflip="1" Show_id="false" startpinid="Resistor-R2-lPin" objectName="Conn-R2-VCC" labely="-24" labelrot="0" id="Conn-R2-VCC"/>
+<item labelx="-16" y="-96" rotation="0" valLabRot="0" pointList="50,-96,50,-92" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-7" x="50" valLabelx="0" endpinid="Rail-VCC1-outnod" vflip="1" Show_id="false" startpinid="Resistor-R2-lPin" objectName="Conn-R2-VCC" labely="-24" labelrot="0" id="Conn-R2-VCC"/>
 
 Unique  Id: Conn-SW2-GND: 
 Circuit Id: Conn-SW2-GND
-<item labelx="-16" y="-64" rotation="0" valLabRot="0" pointList="116,-64,140,-64,140,20" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-8" x="116" valLabelx="0" endpinid="Node-GND2-0" vflip="1" Show_id="false" startpinid="Push-SET-switch0pinN" objectName="Conn-SW2-GND" labely="-24" labelrot="0" id="Conn-SW2-GND"/>
+<item labelx="-16" y="-64" rotation="0" valLabRot="0" pointList="116,-64,160,-64,160,-56" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-8" x="116" valLabelx="0" endpinid="Ground-SW2-Gnd" vflip="1" Show_id="false" startpinid="Push-SET-switch0pinN" objectName="Conn-SW2-GND" labely="-24" labelrot="0" id="Conn-SW2-GND"/>
 
 Unique  Id: Conn-PA1-N2: 
 Circuit Id: Conn-PA1-N2
-<item labelx="-16" y="-164" rotation="0" valLabRot="0" pointList="-152,-164,-148,-164,-148,-252,44,-252,44,-32,60,-32" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-9" x="-152" valLabelx="0" endpinid="Node-N2-0" vflip="1" Show_id="false" startpinid="mega32-1-PA1" objectName="Conn-PA1-N2" labely="-24" labelrot="0" id="Conn-PA1-N2"/>
+<item labelx="-16" y="-164" rotation="0" valLabRot="0" pointList="-152,-164,-148,-164,-148,-252,34,-252,34,-32,50,-32" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-9" x="-152" valLabelx="0" endpinid="Node-N2-0" vflip="1" Show_id="false" startpinid="mega32-1-PA1" objectName="Conn-PA1-N2" labely="-24" labelrot="0" id="Conn-PA1-N2"/>
 
 Unique  Id: Conn-N2-R4: 
 Circuit Id: Conn-N2-R4
-<item labelx="-16" y="-32" rotation="0" valLabRot="0" pointList="60,-32,60,-32" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-9" x="60" valLabelx="0" endpinid="Resistor-R4-rPin" vflip="1" Show_id="false" startpinid="Node-N2-1" objectName="Conn-N2-R4" labely="-24" labelrot="0" id="Conn-N2-R4"/>
+<item labelx="-16" y="-32" rotation="0" valLabRot="0" pointList="50,-32,50,-32" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-9" x="50" valLabelx="0" endpinid="Resistor-R4-rPin" vflip="1" Show_id="false" startpinid="Node-N2-1" objectName="Conn-N2-R4" labely="-24" labelrot="0" id="Conn-N2-R4"/>
 
 Unique  Id: Conn-N2-SW3: 
 Circuit Id: Conn-N2-SW3
-<item labelx="-16" y="-32" rotation="0" valLabRot="0" pointList="60,-32,84,-32" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-9" x="60" valLabelx="0" endpinid="Push-INC-pinP0" vflip="1" Show_id="false" startpinid="Node-N2-2" objectName="Conn-N2-SW3" labely="-24" labelrot="0" id="Conn-N2-SW3"/>
+<item labelx="-16" y="-32" rotation="0" valLabRot="0" pointList="50,-32,84,-32" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-9" x="50" valLabelx="0" endpinid="Push-INC-pinP0" vflip="1" Show_id="false" startpinid="Node-N2-2" objectName="Conn-N2-SW3" labely="-24" labelrot="0" id="Conn-N2-SW3"/>
 
 Unique  Id: Conn-R4-VCC: 
 Circuit Id: Conn-R4-VCC
-<item labelx="-16" y="-64" rotation="0" valLabRot="0" pointList="60,-64,60,-48" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-7" x="60" valLabelx="0" endpinid="Resistor-R4-lPin" vflip="1" Show_id="false" startpinid="Resistor-R2-rPin" objectName="Conn-R4-VCC" labely="-24" labelrot="0" id="Conn-R4-VCC"/>
+<item labelx="-16" y="-64" rotation="0" valLabRot="0" pointList="50,-64,50,-60" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-10" x="50" valLabelx="0" endpinid="Rail-VCC2-outnod" vflip="1" Show_id="false" startpinid="Resistor-R4-lPin" objectName="Conn-R4-VCC" labely="-24" labelrot="0" id="Conn-R4-VCC"/>
 
 Unique  Id: Conn-SW3-GND: 
 Circuit Id: Conn-SW3-GND
-<item labelx="-16" y="-32" rotation="0" valLabRot="0" pointList="116,-32,140,-32,140,20" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-8" x="116" valLabelx="0" endpinid="Node-GND2-1" vflip="1" Show_id="false" startpinid="Push-INC-switch0pinN" objectName="Conn-SW3-GND" labely="-24" labelrot="0" id="Conn-SW3-GND"/>
+<item labelx="-16" y="-32" rotation="0" valLabRot="0" pointList="116,-32,160,-32,160,-24" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-11" x="116" valLabelx="0" endpinid="Ground-SW3-Gnd" vflip="1" Show_id="false" startpinid="Push-INC-switch0pinN" objectName="Conn-SW3-GND" labely="-24" labelrot="0" id="Conn-SW3-GND"/>
 
 Unique  Id: Conn-PA2-N3: 
 Circuit Id: Conn-PA2-N3
-<item labelx="-16" y="-156" rotation="0" valLabRot="0" pointList="-152,-156,-144,-156,-144,-244,48,-244,48,0,60,0" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-10" x="-152" valLabelx="0" endpinid="Node-N3-0" vflip="1" Show_id="false" startpinid="mega32-1-PA2" objectName="Conn-PA2-N3" labely="-24" labelrot="0" id="Conn-PA2-N3"/>
+<item labelx="-16" y="-156" rotation="0" valLabRot="0" pointList="-152,-156,-144,-156,-144,-244,38,-244,38,0,50,0" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-12" x="-152" valLabelx="0" endpinid="Node-N3-0" vflip="1" Show_id="false" startpinid="mega32-1-PA2" objectName="Conn-PA2-N3" labely="-24" labelrot="0" id="Conn-PA2-N3"/>
 
 Unique  Id: Conn-N3-R6: 
 Circuit Id: Conn-N3-R6
-<item labelx="-16" y="0" rotation="0" valLabRot="0" pointList="60,0,60,0" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-10" x="60" valLabelx="0" endpinid="Resistor-R6-rPin" vflip="1" Show_id="false" startpinid="Node-N3-1" objectName="Conn-N3-R6" labely="-24" labelrot="0" id="Conn-N3-R6"/>
+<item labelx="-16" y="0" rotation="0" valLabRot="0" pointList="50,0,50,0" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-12" x="50" valLabelx="0" endpinid="Resistor-R6-rPin" vflip="1" Show_id="false" startpinid="Node-N3-1" objectName="Conn-N3-R6" labely="-24" labelrot="0" id="Conn-N3-R6"/>
 
 Unique  Id: Conn-N3-SW4: 
 Circuit Id: Conn-N3-SW4
-<item labelx="-16" y="0" rotation="0" valLabRot="0" pointList="60,0,84,0" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-10" x="60" valLabelx="0" endpinid="Push-RESET-pinP0" vflip="1" Show_id="false" startpinid="Node-N3-2" objectName="Conn-N3-SW4" labely="-24" labelrot="0" id="Conn-N3-SW4"/>
+<item labelx="-16" y="0" rotation="0" valLabRot="0" pointList="50,0,84,0" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-12" x="50" valLabelx="0" endpinid="Push-RESET-pinP0" vflip="1" Show_id="false" startpinid="Node-N3-2" objectName="Conn-N3-SW4" labely="-24" labelrot="0" id="Conn-N3-SW4"/>
 
 Unique  Id: Conn-R6-VCC: 
 Circuit Id: Conn-R6-VCC
-<item labelx="-16" y="-32" rotation="0" valLabRot="0" pointList="60,-32,60,-16" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-9" x="60" valLabelx="0" endpinid="Resistor-R6-lPin" vflip="1" Show_id="false" startpinid="Node-N2-1" objectName="Conn-R6-VCC" labely="-24" labelrot="0" id="Conn-R6-VCC"/>
+<item labelx="-16" y="-32" rotation="0" valLabRot="0" pointList="50,-32,50,-28" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-13" x="50" valLabelx="0" endpinid="Rail-VCC3-outnod" vflip="1" Show_id="false" startpinid="Resistor-R6-lPin" objectName="Conn-R6-VCC" labely="-24" labelrot="0" id="Conn-R6-VCC"/>
 
 Unique  Id: Conn-SW4-GND: 
 Circuit Id: Conn-SW4-GND
-<item labelx="-16" y="0" rotation="0" valLabRot="0" pointList="116,0,140,0,140,20" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-8" x="116" valLabelx="0" endpinid="Node-GND2-2" vflip="1" Show_id="false" startpinid="Push-RESET-switch0pinN" objectName="Conn-SW4-GND" labely="-24" labelrot="0" id="Conn-SW4-GND"/>
-
-Unique  Id: Conn-GND2-GND: 
-Circuit Id: Conn-GND2-GND
-<item labelx="-16" y="20" rotation="0" valLabRot="0" pointList="140,20,140,24" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-8" x="140" valLabelx="0" endpinid="Ground-2-Gnd" vflip="1" Show_id="false" startpinid="Node-GND2-2" objectName="Conn-GND2-GND" labely="-24" labelrot="0" id="Conn-GND2-GND"/>
+<item labelx="-16" y="0" rotation="0" valLabRot="0" pointList="116,0,160,0,160,8" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-14" x="116" valLabelx="0" endpinid="Ground-SW4-Gnd" vflip="1" Show_id="false" startpinid="Push-RESET-switch0pinN" objectName="Conn-SW4-GND" labely="-24" labelrot="0" id="Conn-SW4-GND"/>
 
 Unique  Id: Conn-PD1-Serial: 
 Circuit Id: Conn-PD1-Serial
-<item labelx="-16" y="-60" rotation="0" valLabRot="0" pointList="-208,-60,-260,-60,-260,-120,-364,-120" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-11" x="-208" valLabelx="0" endpinid="SerialMonitor-1-in0" vflip="1" Show_id="false" startpinid="mega32-1-PD1" objectName="Conn-PD1-Serial" labely="-24" labelrot="0" id="Conn-PD1-Serial"/>
+<item labelx="-16" y="-60" rotation="0" valLabRot="0" pointList="-208,-60,-260,-60,-260,-120,-364,-120" hflip="1" valLabely="0" itemtype="Connector" mainComp="false" enodeid="eNode-15" x="-208" valLabelx="0" endpinid="SerialMonitor-1-pin0" vflip="1" Show_id="false" startpinid="mega32-1-PD1" objectName="Conn-PD1-Serial" labely="-24" labelrot="0" id="Conn-PD1-Serial"/>
 
 </circuit>
