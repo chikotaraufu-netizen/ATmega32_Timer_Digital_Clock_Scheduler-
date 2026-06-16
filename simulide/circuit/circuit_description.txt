@@ -1,89 +1,46 @@
-# SimulIDE Circuit Configuration
-# ATmega32 Timer-Based Digital Clock & Task Scheduler
-# 
-# This file describes the SimulIDE circuit setup for simulation.
-# Load this description and recreate the circuit in SimulIDE.
-#
-# ============================================================
-# CIRCUIT COMPONENTS
-# ============================================================
-#
-# 1. ATmega32 Microcontroller
-#    - Load HEX file: ../firmware/hex/main.hex
-#    - Clock frequency: 8 MHz
-#    - Position: Center of workspace
-#
-# 2. Crystal Oscillator: 8 MHz
-#    - Connected to XTAL1 (Pin 13) and XTAL2 (Pin 12)
-#    - Load capacitors: 2x 22pF to GND
-#
-# 3. Reset Circuit
-#    - 10K resistor from VCC to RESET (Pin 9)
-#    - Push button from RESET to GND
-#
-# 4. User Buttons (Active-Low, connected to GND when pressed)
-#    - SET button: PA0 (Pin 40) with 10K pull-up to VCC
-#    - INCREMENT button: PA1 (Pin 39) with 10K pull-up to VCC  
-#    - CLOCK_RESET button: PA2 (Pin 38) with 10K pull-up to VCC
-#
-# 5. LEDs with Current-Limiting Resistors (330 ohm)
-#    - LED_STATUS (Green): PB0 (Pin 1) -> 330R -> LED -> GND
-#    - LED_TASK (Yellow): PB1 (Pin 2) -> 330R -> LED -> GND
-#
-# 6. USART Serial Monitor
-#    - Connect Serial Monitor to PD1/TXD (Pin 15)
-#    - Baud rate: 9600
-#    - Data bits: 8, Stop bits: 1, Parity: None
-#
-# 7. Power Supply
-#    - VCC (Pin 10) and AVCC (Pin 30): +5V
-#    - GND (Pin 11) and GND (Pin 31): Ground
-#    - 100nF decoupling capacitors on VCC and AVCC
-#
-# ============================================================
-# SIMULATION TEST PROCEDURE
-# ============================================================
-#
-# Test 1: System Startup
-#   - Power on the circuit
-#   - Verify serial output shows "00:00:00"
-#   - Expected: Clock starts at 00:00:00
-#
-# Test 2: One-Second Timing
-#   - Observe serial output
-#   - Verify seconds increment every 1 second
-#   - Expected: 00:00:01, 00:00:02, etc.
-#
-# Test 3: Status LED (2-second toggle)
-#   - Observe LED_STATUS on PB0
-#   - Verify it toggles every 2 seconds
-#   - Expected: ON 2s -> OFF 2s -> ON 2s -> ...
-#
-# Test 4: Task LED (5-second flash)
-#   - Observe LED_TASK on PB1
-#   - Verify it flashes every 5 seconds
-#   - Expected: Brief ON pulse every 5 seconds
-#
-# Test 5: SET Button
-#   - Press SET button (PA0)
-#   - Verify time-setting mode activates
-#   - Expected: Serial shows "SET: HOURS" mode
-#
-# Test 6: INCREMENT Button
-#   - While in SET mode, press INCREMENT (PA1)
-#   - Verify selected time field increments
-#   - Expected: Hours/Minutes/Seconds increment
-#
-# Test 7: RESET Button
-#   - Press CLOCK_RESET button (PA2)
-#   - Verify clock resets to 00:00:00
-#   - Expected: Display shows 00:00:00
-#
-# ============================================================
-# NOTES
-# ============================================================
-# - SimulIDE may require adjusting simulation speed for accurate timing
-# - The serial monitor in SimulIDE connects to the USART TX pin
-# - Internal pull-ups are enabled in firmware, but external 10K 
-#   pull-ups are recommended for simulation stability
-# - Capture screenshots for each test case for documentation
+# SimulIDE Circuit — ATmega32 Timer-Based Digital Clock & Task Scheduler
+
+## File
+- **Circuit file:** `ATmega32_Clock.simu`
+- **Firmware HEX:** `../../firmware/hex/main.hex`
+
+## How to Run
+
+1. Open SimulIDE
+2. File → Open → Select `ATmega32_Clock.simu`
+3. Right-click the ATmega32 chip → **Load Firmware** → Navigate to `firmware/hex/main.hex`
+4. Set MCU frequency to **8 MHz** (right-click → Properties)
+5. Click the **Play** button (▶) to start simulation
+
+## Circuit Components
+
+| Component | SimulIDE ID | Description |
+|-----------|------------|-------------|
+| ATmega32 MCU | mega32-1 | Main microcontroller, 8 MHz |
+| LED (Yellow) | LED_STATUS | Status LED on PB0 — toggles every 2s |
+| LED (Green) | LED_TASK | Task LED on PB1 — flashes every 5s |
+| R3 (220Ω) | R3_220 | Current limiter for Status LED |
+| R5 (220Ω) | R5_220 | Current limiter for Task LED |
+| SET Button | SET_BTN | Push button on PA0 (key: S) |
+| INC Button | INC_BTN | Push button on PA1 (key: I) |
+| RESET Button | CLOCK_RST | Push button on PA2 (key: R) |
+| R2, R4, R6 (10kΩ) | Pull-ups | External pull-up resistors for buttons |
+| Serial Monitor | Serial_Monitor | USART output at 9600 baud on PD1 |
+
+## Keyboard Shortcuts
+
+| Key | Action |
+|-----|--------|
+| **S** | Press SET button (enter/cycle time-set mode) |
+| **I** | Press INC button (increment selected field) |
+| **R** | Press RESET button (reset clock to 00:00:00) |
+
+## Expected Behavior
+
+1. **Startup:** Clock shows `00:00:00` on serial monitor
+2. **Counting:** Seconds increment every 1 second
+3. **Status LED (Yellow):** Toggles ON/OFF every 2 seconds
+4. **Task LED (Green):** Flashes briefly every 5 seconds
+5. **SET button:** Cycles through Hours → Minutes → Seconds → Normal
+6. **INC button:** Increments the currently selected time field
+7. **RESET button:** Resets clock to 00:00:00
