@@ -1,138 +1,62 @@
-# ⏱️ Timer1 Configuration — CTC Mode
+# Timer Configuration
 
-> Detailed documentation of the ATmega32 Timer1 configuration for generating a precise 100 Hz (10 ms) interrupt using Clear Timer on Compare Match (CTC) mode.
+## Task 2: Select Timer Resource and Time Base
 
----
+### Timer Resource Selected
+**Timer/Counter1 (16-bit)**
 
-## Table of Contents
+Timer1 was selected because its 16-bit resolution allows a direct
+compare-match value for a 1-second interrupt at 8 MHz with a 1024
+prescaler, without overflow or extra software-divider tricks. The
+8-bit timers (Timer0, Timer2) cannot reach a 1-second period at
+reasonable prescaler values without additional counting layers.
 
-- [Overview](#overview)
-- [Timer1 CTC Mode Explanation](#timer1-ctc-mode-explanation)
-- [Prescaler Selection Rationale](#prescaler-selection-rationale)
-- [OCR1A Value Calculation](#ocr1a-value-calculation)
-- [Register Configuration](#register-configuration)
-- [Interrupt Timing Analysis](#interrupt-timing-analysis)
-- [Initialization Code](#initialization-code)
-- [ISR Implementation](#isr-implementation)
+### Mode of Operation Selected
+**CTC (Clear Timer on Compare Match) — Mode 4 (WGM13:0 = 0100)**
 
----
+Reasons for choosing CTC mode over alternatives:
 
-## Overview
+| Mode | Suitability |
+|---|---|
+| Normal mode | Requires manually reloading the counter inside the ISR, which is less accurate and accumulates timing drift over long periods. |
+| PWM modes (Fast PWM, Phase Correct) | Designed for generating output waveforms on OC1A/OC1B pins, not for generating periodic interrupts for timekeeping. |
+| **CTC mode (selected)** | On reaching `OCR1A`, the timer automatically resets to 0 and triggers `TIMER1_COMPA_vect`. No manual reload needed — accurate, repeatable, and simple to use as a system time base. |
 
-The ATmega32's **16-bit Timer/Counter1** is configured in **CTC (Clear Timer on Compare Match) mode** to generate a precise **100 Hz (10 ms) interrupt signal**. This interrupt serves as the master clock tick for the digital clock and task scheduler.
+### Time Base Selected
+**1 Hz (one interrupt every 1 second)**
 
-### Key Parameters
+This was chosen over the 1 ms or 10 ms options because:
+- It maps directly onto the "seconds value increases every 1 second"
+  requirement with no extra software division.
+- It keeps the ISR simple — each interrupt = exactly one second elapsed.
+- The 2-second and 5-second scheduled tasks (status LED, sampling LED)
+  can be derived with simple tick counters (`tick_count % 2`,
+  `tick_count % 5`).
 
-| Parameter | Value |
-|-----------|-------|
-| System Clock (F_CPU) | 8,000,000 Hz (8 MHz) |
-| Timer Mode | CTC (Mode 4) |
-| Prescaler | 64 |
-| Timer Clock (f_timer) | 125,000 Hz |
-| OCR1A Value | 1249 |
-| Interrupt Frequency | 100.000 Hz (Exact) |
-| Timer Resolution | 16-bit (0–65535) |
+> **Note (Extension Task):** If implementing the extension (500 ms,
+> 2 s, and 10 s tasks), a faster base such as 1 ms or 10 ms would be
+> selected instead, with all longer intervals derived from a
+> millisecond tick counter using modulo arithmetic.
 
----
+### Clock Source
+**F_CPU = 8 MHz**
 
-## Timer1 CTC Mode Explanation
+### Prescaler Selected
+**1024**
 
-### What is CTC Mode?
-
-In **CTC (Clear Timer on Compare Match)** mode, the timer counter register (TCNT1) counts up from 0 and is automatically cleared (reset to 0) when it matches the value stored in the Output Compare Register (OCR1A). This creates a precisely repeatable waveform.
-
-```mermaid
-graph LR
-    A["TCNT1 = 0"] --> B["TCNT1 counts up<br/>on each timer clock tick"]
-    B --> C{"TCNT1 == OCR1A?"}
-    C -->|No| B
-    C -->|Yes| D["Compare Match!<br/>• TCNT1 → 0<br/>• Interrupt Flag Set<br/>• ISR Executes"]
-    D --> A
-```
-
-### Timer1 Count Sequence in CTC Mode
-
-```
-Timer Clock Ticks:  0 → 1 → 2 → 3 → ... → 1248 → 1249 → 0 → 1 → 2 → ...
-                                                        ↑
-                                               Compare Match!
-                                               TCNT1 cleared to 0
-                                               OCF1A flag set
-                                               ISR(TIMER1_COMPA_vect) fires
-```
-
-The timer counts from **0 to 1249** (inclusive), which is **1250 timer clock ticks** per cycle.
+Chosen because it keeps the resulting compare value (`OCR1A` ≈ 7812)
+small enough to fit comfortably within Timer1's 16-bit range
+(0–65535) while still producing exactly 1 Hz. (Full calculation
+verification is covered in Task 3 / `compare_match_calculation.md`.)
 
 ---
 
-## Prescaler Selection Rationale
+## Summary Table
 
-The ATmega32's system clock runs at **8 MHz**. To generate a 100 Hz interrupt, we divide the 8 MHz clock using a prescaler.
-
-```
-f_timer = F_CPU / Prescaler
-f_timer = 8,000,000 Hz / 64
-f_timer = 125,000 Hz
-```
-
-This ensures the counter ticks 125,000 times per second. 
-
----
-
-## OCR1A Value Calculation
-
-To achieve exactly 100 Hz, we need the timer to interrupt 100 times per second. 
-
-```
-Required ticks = f_timer / desired_frequency
-Required ticks = 125,000 / 100 = 1,250 ticks per interrupt
-```
-
-Since the timer counts from 0, the final OCR1A value is:
-`OCR1A = 1250 - 1 = 1249`
-
-This provides a mathematically perfect 10 ms (100 Hz) interrupt.
-
----
-
-## Register Configuration
-
-| Register | Bit(s) | Value | Description |
-|----------|--------|-------|-------------|
-| **TCCR1B** | WGM12 | 1 | Enable CTC Mode |
-| **TCCR1B** | CS11, CS10 | 1, 1 | Set Prescaler to 64 |
-| **TIMSK** | OCIE1A | 1 | Enable Compare Match A Interrupt |
-| **OCR1A** | 15:0 | 1249 | Top value for timer |
-
----
-
-## Initialization Code
-
-```c
-void timer1_init(void)
-{
-    // 1. Set CTC mode (Clear Timer on Compare Match)
-    TCCR1B |= (1 << WGM12);
-
-    // 2. Set OCR1A compare value for 100 Hz (10 ms)
-    OCR1AH = (uint8_t)(1249 >> 8);
-    OCR1AL = (uint8_t)(1249 & 0xFF);
-
-    // 3. Enable Timer1 Compare Match A Interrupt
-    TIMSK |= (1 << OCIE1A);
-
-    // 4. Set prescaler to 64 and start timer
-    TCCR1B |= (1 << CS11) | (1 << CS10);
-}
-```
-
-## ISR Implementation
-
-The ISR simply increments a tick counter. To prevent heavy logic from blocking interrupts, all business logic (clock incrementing, LED toggling) is executed cooperatively in the main loop polling the `timer1_tick_pending()` flag.
-
-```c
-ISR(TIMER1_COMPA_vect)
-{
-    g_timer1_tick = true;
-}
-```
+| Parameter | Selected Value | Justification |
+|---|---|---|
+| Timer | Timer1 (16-bit) | Sufficient range for 1 Hz compare value at 8 MHz / 1024 |
+| Mode | CTC (Mode 4) | Auto-reset on compare match; no manual reload; accurate |
+| Time base | 1 Hz (1 second) | Matches "seconds" requirement directly |
+| Prescaler | 1024 | Keeps OCR1A small (~7812), fits in 16-bit register |
+| Clock source (F_CPU) | 8 MHz | Standard ATmega32 operating clock |

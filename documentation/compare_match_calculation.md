@@ -1,168 +1,97 @@
-# 🔢 Compare Match (OCR1A) Calculation
+# Compare-Match Calculation
 
-> Step-by-step derivation of the Output Compare Register value for generating a precise 100 Hz (10 ms) interrupt on the ATmega32 Timer1.
+## Task 3: Calculate Timer Prescaler and Compare Value
+
+### Formula Used
+
+```
+OCR1A = (F_CPU / (Prescaler x f_interrupt)) - 1
+```
+
+### Known Values
+- F_CPU = 8,000,000 Hz (8 MHz)
+- f_interrupt = 1 Hz (target: one interrupt per second)
+- Timer1 is 16-bit, so OCR1A must satisfy 0 <= OCR1A <= 65535
 
 ---
 
-## Table of Contents
+## Step 1: Evaluate All Available Prescaler Options
 
-- [The Fundamental Formula](#the-fundamental-formula)
-- [Parameter Definitions](#parameter-definitions)
-- [Step-by-Step Calculation](#step-by-step-calculation)
-- [Verification](#verification)
-- [Prescaler Options](#prescaler-options)
+Timer1 prescaler options on the ATmega32: 1, 8, 64, 256, 1024
 
----
-
-## The Fundamental Formula
-
-The compare match value for CTC mode is calculated using:
-
-```
-┌─────────────────────────────────────────────────────┐
-│                                                     │
-│              F_CPU                                  │
-│   OCR1A = ─────────────────────── − 1               │
-│           Prescaler × f_interrupt                   │
-│                                                     │
-└─────────────────────────────────────────────────────┘
-```
-
-### Why "− 1"?
-
-The timer counts from **0 to OCR1A** inclusive, which means the timer goes through **(OCR1A + 1)** states before resetting. Therefore:
-
-```
-Total counts per cycle = OCR1A + 1
-
-Interrupt period = (OCR1A + 1) × Prescaler / F_CPU
-
-Solving for OCR1A:
-    OCR1A + 1 = F_CPU / (Prescaler × f_interrupt)
-    OCR1A     = F_CPU / (Prescaler × f_interrupt) - 1
-```
+| Prescaler | OCR1A = (8,000,000 / (Prescaler x 1)) - 1 | Fits in 16-bit (<= 65535)? |
+|---|---|---|
+| 1    | 7,999,999 | No |
+| 8    | 999,999   | No |
+| 64   | 124,999   | No |
+| 256  | 31,249    | Yes |
+| 1024 | 7,811.5 -> 7812 | Yes |
 
 ---
 
-## Parameter Definitions
+## Step 2: Prescaler Selection Justification
 
-| Symbol | Parameter | Value | Unit |
-|--------|-----------|-------|------|
-| F_CPU | System clock frequency | 8,000,000 | Hz |
-| Prescaler | Timer clock divider | 64 | — |
-| f_interrupt | Desired interrupt frequency | 100 | Hz |
-| f_timer | Timer clock frequency (F_CPU / Prescaler) | 125,000 | Hz |
-| T_tick | Timer tick period (1 / f_timer) | 8.0 | µs |
-| OCR1A | Output Compare Register value | 1,249 | — |
+Prescaler = **1024** was selected because:
+
+1. It matches the worked example given in the project specification,
+   keeping firmware and documentation consistent.
+2. It produces a smaller OCR1A value (7812) relative to the 16-bit
+   ceiling (65535), leaving more headroom for future changes
+   (e.g., if F_CPU is increased to 16 MHz, OCR1A would become ~15624,
+   still well within range -- whereas with prescaler 256 it would
+   become ~62499, very close to overflow).
+3. Prescaler 256 is also valid but offers a much tighter margin to
+   the 16-bit limit and was not used in the reference example.
 
 ---
 
-## Step-by-Step Calculation
-
-### Step 1: Determine the Timer Clock Frequency
-
-The prescaler divides the system clock to produce the timer's input clock:
+## Step 3: Final Calculation
 
 ```
-f_timer = F_CPU / Prescaler
-f_timer = 8,000,000 Hz / 64
-f_timer = 125,000 Hz
+OCR1A = (8,000,000 / (1024 x 1)) - 1
+OCR1A = 7812.5 - 1
+OCR1A = 7811.5  ->  rounds to 7812
 ```
 
-> This means the timer counter (TCNT1) increments **125,000 times per second**.
+**Final value: OCR1A = 7812**
 
-### Step 2: Calculate the Required Number of Counts
+---
 
-For a 100 Hz interrupt (one interrupt every 10 milliseconds), the timer must count through a specific number of ticks:
-
-```
-Required counts = f_timer / f_interrupt
-Required counts = 125,000 / 100
-Required counts = 1,250 ticks
-```
-
-### Step 3: Apply the OCR1A Formula
-
-Since the timer counts from 0, we subtract 1:
+## Step 4: Verify Actual Resulting Frequency (Rounding Error)
 
 ```
-OCR1A = Required counts - 1
-OCR1A = 1,250 - 1
-OCR1A = 1,249
+Actual f_interrupt = F_CPU / (Prescaler x (OCR1A + 1))
+                    = 8,000,000 / (1024 x 7813)
+                    = 8,000,000 / 7,999,312
+                    ~= 1.0000086 Hz
 ```
 
-### Step 4: Verify the Range
+- Error: approximately 0.00086%
+- Equivalent drift: approximately 1 second every ~13 days
+- This level of drift is acceptable for this project and should be
+  noted in test_results.md as expected clock behavior.
 
-The ATmega32 Timer1 is a 16-bit timer:
+---
 
-```
-Minimum OCR1A value: 0
-Maximum OCR1A value: 65,535 (0xFFFF)
+## Final Register Configuration
 
-Our value: 1,249 ✅ (well within the 16-bit range)
-```
-
-### Final Result
-
-```
-┌─────────────────────────────┐
-│                             │
-│     OCR1A = 1249            │
-│     (Hex: 0x04E1)           │
-│     (Binary: 0000 0100      │
-│              1110 0001)     │
-│                             │
-└─────────────────────────────┘
+```c
+TCCR1B |= (1 << WGM12);              // CTC mode (WGM12=1, WGM13=0)
+OCR1A = 7812;                        // Compare value for 1 Hz interrupt
+TIMSK |= (1 << OCIE1A);              // Enable Timer1 Compare Match A interrupt
+TCCR1B |= (1 << CS12) | (1 << CS10); // Prescaler = 1024 (CS12:CS11:CS10 = 1:0:1)
+sei();                                // Enable global interrupts
 ```
 
 ---
 
-## Verification
+## Summary
 
-### Forward Calculation: OCR1A → Frequency
-
-Starting from our chosen OCR1A value, verify the resulting interrupt frequency:
-
-```
-Step 1: Total counts per cycle
-    counts = OCR1A + 1 = 1249 + 1 = 1250
-
-Step 2: Time per cycle (interrupt period)
-    T_interrupt = counts × Prescaler / F_CPU
-    T_interrupt = 1250 × 64 / 8,000,000
-    T_interrupt = 80,000 / 8,000,000
-    T_interrupt = 0.010000 seconds (Exactly 10 ms)
-
-Step 3: Actual interrupt frequency
-    f_actual = 1 / T_interrupt
-    f_actual = 1 / 0.010000
-    f_actual = 100.000000 Hz
-```
-
-### Verification Summary
-
-| Parameter | Ideal | Actual | Difference |
-|-----------|-------|--------|------------|
-| OCR1A | 1249 | 1249 | 0 |
-| Interrupt period | 10.000000 ms | 10.000000 ms | 0.0 µs |
-| Interrupt frequency | 100.000000 Hz | 100.000000 Hz | 0.0000% |
-
-> **Conclusion**: By using Prescaler 64 and OCR1A = 1249, we achieve **0.000% error**. The timer is mathematically perfect relative to the external 8 MHz crystal oscillator.
-
----
-
-## Prescaler Options
-
-### Full Prescaler Analysis for 100 Hz @ 8 MHz
-
-| Prescaler | f_timer (Hz) | Exact OCR1A | Rounded OCR1A | Fits 16-bit | Error |
-|-----------|-------------|-------------|---------------|-------------|-------|
-| 1 | 8,000,000 | 79,999 | 79,999 | ❌ No* | — |
-| 8 | 1,000,000 | 9,999 | 9,999 | ✅ Yes | **0%** |
-| **64** | **125,000** | **1,249** | **1,249** | **✅ Yes** | **0%** |
-| 256 | 31,250 | 311.5 | 312 | ✅ Yes | ~0.16% |
-| 1024 | 7,812.5 | 77.125 | 77 | ✅ Yes | ~0.16% |
-
-*\* Value exceeds 65,535 (16-bit maximum)*
-
-> **Why Prescaler 64?** We chose 64 because it provides a perfectly exact 100 Hz frequency while keeping the OCR1A value (1249) comfortably small but large enough to provide excellent sub-millisecond precision if needed elsewhere in the program.
+| Parameter | Value |
+|---|---|
+| F_CPU | 8 MHz |
+| Prescaler | 1024 |
+| OCR1A | 7812 |
+| Target frequency | 1 Hz |
+| Actual frequency | ~1.0000086 Hz |
+| Drift | ~1 sec every 13 days |
