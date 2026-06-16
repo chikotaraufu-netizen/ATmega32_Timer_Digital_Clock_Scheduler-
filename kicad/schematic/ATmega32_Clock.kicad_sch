@@ -740,8 +740,6 @@
     )
   )
   )
-
-  ;; ============= ATmega32 MCU (U1) - Center =============
   (symbol (lib_id "MCU_Microchip_ATmega:ATmega32A-P") (at 152.4 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000001-0001-4000-8000-000000000001")
@@ -751,8 +749,6 @@
     (property "Datasheet" "" (at 152.4 101.6 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "U1") (unit 1))))
   )
-
-  ;; ============= Crystal Y1 (8MHz) =============
   (symbol (lib_id "Device:Crystal") (at 115.57 78.74 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000002-0002-4000-8000-000000000002")
@@ -762,8 +758,6 @@
     (property "Datasheet" "" (at 115.57 78.74 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "Y1") (unit 1))))
   )
-
-  ;; ============= C1 22pF (XTAL1 load cap) =============
   (symbol (lib_id "Device:C") (at 107.95 88.9 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000003-0003-4000-8000-000000000003")
@@ -773,8 +767,6 @@
     (property "Datasheet" "" (at 107.95 88.9 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "C1") (unit 1))))
   )
-
-  ;; ============= C2 22pF (XTAL2 load cap) =============
   (symbol (lib_id "Device:C") (at 123.19 88.9 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000004-0004-4000-8000-000000000004")
@@ -784,8 +776,6 @@
     (property "Datasheet" "" (at 123.19 88.9 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "C2") (unit 1))))
   )
-
-  ;; ============= C3 100nF (VCC decoupling) =============
   (symbol (lib_id "Device:C") (at 157.48 48.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000005-0005-4000-8000-000000000005")
@@ -795,8 +785,6 @@
     (property "Datasheet" "" (at 157.48 48.26 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "C3") (unit 1))))
   )
-
-  ;; ============= C4 100nF (AVCC decoupling) =============
   (symbol (lib_id "Device:C") (at 165.1 48.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000006-0006-4000-8000-000000000006")
@@ -806,8 +794,6 @@
     (property "Datasheet" "" (at 165.1 48.26 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "C4") (unit 1))))
   )
-
-  ;; ============= R1 10K (RESET pull-up) =============
   (symbol (lib_id "Device:R") (at 121.92 55.88 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000007-0007-4000-8000-000000000007")
@@ -817,8 +803,6 @@
     (property "Datasheet" "" (at 121.92 55.88 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "R1") (unit 1))))
   )
-
-  ;; ============= SW1 RESET button =============
   (symbol (lib_id "Switch:SW_Push") (at 121.92 68.58 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000008-0008-4000-8000-000000000008")
@@ -828,8 +812,6 @@
     (property "Datasheet" "" (at 121.92 68.58 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "SW1") (unit 1))))
   )
-
-  ;; ============= R2-R4 Button pull-ups =============
   (symbol (lib_id "Device:R") (at 195.58 121.92 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000009-0009-4000-8000-000000000009")
@@ -857,8 +839,6 @@
     (property "Datasheet" "" (at 220.98 121.92 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "R4") (unit 1))))
   )
-
-  ;; ============= SW2-SW4 User buttons =============
   (symbol (lib_id "Switch:SW_Push") (at 195.58 134.62 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a000000c-000c-4000-8000-00000000000c")
@@ -886,8 +866,6 @@
     (property "Datasheet" "" (at 220.98 134.62 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "SW4") (unit 1))))
   )
-
-  ;; ============= R5-R6 LED resistors =============
   (symbol (lib_id "Device:R") (at 195.58 76.2 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a000000f-000f-4000-8000-00000000000f")
@@ -906,8 +884,6 @@
     (property "Datasheet" "" (at 208.28 76.2 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "R6") (unit 1))))
   )
-
-  ;; ============= D1-D2 LEDs =============
   (symbol (lib_id "Device:LED") (at 195.58 88.9 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000011-0011-4000-8000-000000000011")
@@ -926,8 +902,6 @@
     (property "Datasheet" "" (at 208.28 88.9 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "D2") (unit 1))))
   )
-
-  ;; ============= J1 USART Header =============
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 107.95 114.3 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000013-0013-4000-8000-000000000013")
@@ -937,8 +911,6 @@
     (property "Datasheet" "" (at 107.95 114.3 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "J1") (unit 1))))
   )
-
-  ;; ============= J2 ISP Header =============
   (symbol (lib_id "Connector_Generic:Conn_02x03_Odd_Even") (at 88.9 82.55 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000014-0014-4000-8000-000000000014")
@@ -948,8 +920,6 @@
     (property "Datasheet" "" (at 88.9 82.55 0) (effects (font (size 1.27 1.27)) hide))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "J2") (unit 1))))
   )
-
-  ;; ============= Power Symbols =============
   (symbol (lib_id "power:VCC") (at 152.4 38.1 0) (unit 1) (in_bom yes) (on_board yes) (dnp no)
     (uuid "a0000020-0020-4000-8000-000000000020")
     (property "Reference" "#PWR01" (at 152.4 41.91 0) (effects (font (size 1.27 1.27)) hide))
@@ -1035,8 +1005,6 @@
     (property "Value" "GND" (at 220.98 148.59 0) (effects (font (size 1.27 1.27))))
     (instances (project "ATmega32_Clock" (path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55" (reference "#PWR014") (unit 1))))
   )
-
-  ;; ============= Net Labels =============
   (label "SET_BTN" (at 177.8 139.7 0) (effects (font (size 1.27 1.27))) (uuid "a0000040-0040-4000-8000-000000000040"))
   (label "INC_BTN" (at 177.8 137.16 0) (effects (font (size 1.27 1.27))) (uuid "a0000041-0041-4000-8000-000000000041"))
   (label "CLOCK_RESET" (at 177.8 134.62 0) (effects (font (size 1.27 1.27))) (uuid "a0000042-0042-4000-8000-000000000042"))
@@ -1047,8 +1015,6 @@
   (label "MOSI" (at 81.28 85.09 0) (effects (font (size 1.27 1.27))) (uuid "a0000047-0047-4000-8000-000000000047"))
   (label "MISO" (at 97.79 82.55 0) (effects (font (size 1.27 1.27))) (uuid "a0000048-0048-4000-8000-000000000048"))
   (label "SCK" (at 81.28 82.55 0) (effects (font (size 1.27 1.27))) (uuid "a0000049-0049-4000-8000-000000000049"))
-
-  ;; ============= Wires =============
   (wire (pts (xy 152.4 38.1) (xy 152.4 52.07)) (stroke (width 0) (type default)) (uuid "a0000050-0050-4000-8000-000000000050"))
   (wire (pts (xy 152.4 149.86) (xy 152.4 157.48)) (stroke (width 0) (type default)) (uuid "a0000051-0051-4000-8000-000000000051"))
   (wire (pts (xy 121.92 48.26) (xy 121.92 52.07)) (stroke (width 0) (type default)) (uuid "a0000052-0052-4000-8000-000000000052"))
@@ -1074,8 +1040,6 @@
   (wire (pts (xy 208.28 92.71) (xy 208.28 96.52)) (stroke (width 0) (type default)) (uuid "a0000066-0066-4000-8000-000000000066"))
   (wire (pts (xy 121.92 63.5) (xy 121.92 68.58)) (stroke (width 0) (type default)) (uuid "a0000067-0067-4000-8000-000000000067"))
   (wire (pts (xy 121.92 73.66) (xy 121.92 76.2)) (stroke (width 0) (type default)) (uuid "a0000068-0068-4000-8000-000000000068"))
-
-  ;; ============= Text annotations =============
   (text "TIMER1 CTC: OCR1A = 8000000/(64*100) - 1 = 1249\nInterrupt Rate: 100 Hz (10 ms)\nPrescaler: 64 | F_CPU: 8 MHz"
     (at 30.48 44.45 0) (effects (font (size 1.524 1.524)))
     (uuid "a0000070-0070-4000-8000-000000000070")
