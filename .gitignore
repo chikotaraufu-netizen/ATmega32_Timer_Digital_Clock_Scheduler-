@@ -36,3 +36,4 @@ __pycache__/
 node_modules/
 *.rpt
 rebuild_schematic.py
+.history/
