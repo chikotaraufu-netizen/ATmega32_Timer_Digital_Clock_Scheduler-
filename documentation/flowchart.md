@@ -85,7 +85,7 @@ flowchart TD
     PORTA_CFG --> PORTB_CFG["Configure Port B<br/>DDRB = 0x03 (PB0,PB1 outputs)<br/>PORTB = 0x00 (LEDs off)"]
     PORTB_CFG --> TIMER_INIT["Timer1 Initialization"]
 
-    TIMER_INIT --> T1_CTC["Set CTC Mode<br/>TCCR1A = 0x00<br/>TCCR1B = (1<<WGM12)|(1<<CS12)|(1<<CS10)"]
+    TIMER_INIT --> T1_CTC["Set CTC Mode<br/>TCCR1A = 0x00<br/>TCCR1B = (1<<WGM12)|(1<<CS11)|(1<<CS10)"]
     T1_CTC --> T1_OCR["Set Compare Value<br/>OCR1A = 1249"]
     T1_OCR --> T1_CNT["Reset Counter<br/>TCNT1 = 0"]
     T1_CNT --> T1_INT["Enable Interrupt<br/>TIMSK |= (1<<OCIE1A)"]

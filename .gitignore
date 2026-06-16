@@ -34,3 +34,5 @@ simulide/**/*.autosave
 __pycache__/
 *.pyc
 node_modules/
+*.rpt
+rebuild_schematic.py
