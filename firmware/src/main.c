@@ -6,11 +6,11 @@
  * peripherals and modules, then enters an infinite non-blocking
  * super-loop that:
  *
- *   1. Checks for a 10 ms (100 Hz) tick from Timer1 (ISR-set flag).
- *   2. On each 10 ms tick: advances the task scheduler.
- *   3. Every 100 ticks (1 second), advances the clock and updates the display.
+ *   1. Checks for a 1 s (1 Hz) tick from Timer1 (ISR-set flag).
+ *   2. On each 1 s tick: advances the clock, scheduler, and buttons.
+ *   3. Updates the display every second.
  *   4. Runs any pending scheduled tasks (LED toggling/flashing).
- *   5. Polls buttons with debounce and handles time-set mode.
+ *   5. Polls buttons and handles time-set mode.
  *
  * Design notes:
  *   - The ISR (timer.c) only sets a flag – all work happens here.
@@ -56,14 +56,14 @@ int main(void)
     buttons_init();     /* GPIO inputs with pull-ups   */
     usart_init();       /* 9600 baud 8N1               */
     scheduler_init();   /* LED outputs, counters reset  */
-    timer1_init();      /* Timer1 CTC → 100 Hz tick     */
+    timer1_init();      /* Timer1 CTC → 1 Hz tick       */
 
     /* Enable global interrupts – Timer1 ISR can now fire */
     sei();
 
     /* Send a startup banner */
     display_message("=== ATmega32 Digital Clock ===");
-    display_message("Timer1 CTC @ 100 Hz | USART 9600");
+    display_message("Timer1 CTC @ 1 Hz | USART 9600");
     display_message("Buttons: SET / INC / RESET");
     display_message("------------------------------");
 
@@ -73,34 +73,25 @@ int main(void)
     /* Current time-set mode */
     set_mode_t mode = MODE_NORMAL;
 
-    /* Counter for 10ms ticks to reach 1 second */
-    uint8_t ms_ticks = 0;
-
     /* ================================================================ */
     /*  Super-loop – runs forever, non-blocking                        */
     /* ================================================================ */
     for (;;) {
 
-        /* ---- 1. Check for 10 ms (100 Hz) tick ---- */
+        /* ---- 1. Check for 1 s (1 Hz) tick ---- */
         if (timer1_tick_pending()) {
 
-            /* Advance the task scheduler and buttons every 10 ms */
+            /* Advance the task scheduler and buttons every 1 s */
             scheduler_tick();
             buttons_tick();
 
-            /* Count 10 ms ticks up to 100 to make 1 second */
-            ms_ticks++;
-            if (ms_ticks >= 100) {
-                ms_ticks = 0;
-
-                if (mode == MODE_NORMAL) {
-                    /* Advance clock only in normal mode */
-                    clock_tick();
-                }
-
-                /* Display the current time every second */
-                display_time(clock_get_time());
+            if (mode == MODE_NORMAL) {
+                /* Advance clock only in normal mode */
+                clock_tick();
             }
+
+            /* Display the current time every second */
+            display_time(clock_get_time());
         }
 
         /* ---- 2. Execute any pending scheduled tasks ---- */

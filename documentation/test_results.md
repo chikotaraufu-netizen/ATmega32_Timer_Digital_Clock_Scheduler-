@@ -58,7 +58,7 @@
 
 ### TC-1: Clock Accuracy Tests
 
-These tests verify that the Timer1 CTC configuration produces an accurate 100 Hz tick and the clock counts correctly.
+These tests verify that the Timer1 CTC configuration produces an accurate 1 Hz interrupt and the clock counts correctly.
 
 #### TC-1.1: One-Second Tick Accuracy
 
@@ -481,7 +481,7 @@ These tests verify boundary conditions and edge cases.
 
 | ID | Severity | Description | Mitigation |
 |----|----------|-------------|------------|
-| KI-1 | Low | Clock drifts ~16s/day due to prescaler 64 rounding | Use prescaler 256 or software compensation |
+| KI-1 | Low | Clock drifts ~16s/day due to prescaler 1024 rounding | Use software compensation or external RTC |
 | KI-2 | Info | No persistent time storage — clock resets on power loss | Add EEPROM storage or external RTC |
 | KI-3 | Info | No AM/PM or 12-hour mode | Software enhancement for future version |
 | KI-4 | Low | Button debounce uses software delay — may miss very rapid presses | Hardware debounce circuit recommended |

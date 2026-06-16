@@ -277,7 +277,7 @@ sequenceDiagram
     participant LED as LED Module
     participant UART as USART Module
 
-    Note over T1: TCNT1 counts 0→1249
+    Note over T1: TCNT1 counts 0→7812
 
     T1->>ISR: Compare Match Interrupt
     activate ISR
@@ -325,8 +325,8 @@ sequenceDiagram
 
 ```
 8 MHz Crystal → XTAL1/XTAL2 → System Clock (clk_IO)
-    → Prescaler (/64) → Timer1 Clock (125,000 Hz)
-    → TCNT1 counts 0→1249 → Compare Match
+    → Prescaler (/1024) → Timer1 Clock (7,812.5 Hz)
+    → TCNT1 counts 0→7812 → Compare Match
     → OCF1A Flag → ISR → tick_flag
     → Main Loop → Clock Module → USART TX → Terminal
 ```

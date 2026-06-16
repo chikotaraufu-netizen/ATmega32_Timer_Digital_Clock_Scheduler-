@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](#license)
 [![Build](https://img.shields.io/badge/Build-AVR--GCC-orange.svg)](#software-requirements)
 
-> A precision digital clock and cooperative task scheduler built on the ATmega32 microcontroller, leveraging Timer1 in CTC mode for accurate 100Hz timekeeping with USART-based HH:MM:SS display and multi-task LED scheduling.
+> A precision digital clock and cooperative task scheduler built on the ATmega32 microcontroller, leveraging Timer1 in CTC mode for accurate 1Hz timekeeping with USART-based HH:MM:SS display and multi-task LED scheduling.
 
 ---
 
@@ -28,7 +28,7 @@
 
 ## 🎯 Project Overview
 
-This project implements a **real-time digital clock** and **cooperative task scheduler** on the **ATmega32** microcontroller running at **8 MHz** with an external crystal oscillator. The system uses **Timer1 in CTC (Clear Timer on Compare Match) mode** with a prescaler of 64 and an OCR1A value of 1249 to generate a precise **100 Hz interrupt**—the heartbeat of the entire system.
+This project implements a **real-time digital clock** and **cooperative task scheduler** on the **ATmega32** microcontroller running at **8 MHz** with an external crystal oscillator. The system uses **Timer1 in CTC (Clear Timer on Compare Match) mode** with a prescaler of 1024 and an OCR1A value of 7812 to generate a precise **1 Hz interrupt**—the heartbeat of the entire system.
 
 The clock displays time in **HH:MM:SS** format via the **USART interface** at 9600 baud, while the task scheduler manages two LED tasks using a **non-blocking, ISR-flag-driven architecture**:
 
@@ -43,7 +43,7 @@ Three hardware buttons provide user interaction for time setting, field incremen
 
 | Feature | Description |
 |---------|-------------|
-| **Precision Timekeeping** | Timer1 CTC mode with 64 prescaler generates accurate 100Hz tick |
+| **Precision Timekeeping** | Timer1 CTC mode with 1024 prescaler generates accurate 1Hz tick |
 | **USART Display** | Real-time HH:MM:SS output at 9600 baud (8N1) |
 | **Task Scheduler** | Cooperative, flag-based scheduler with configurable task intervals |
 | **Status LED** | Heartbeat indicator toggling every 2 seconds |
@@ -71,7 +71,7 @@ graph TB
     end
 
     subgraph Firmware["💻 Firmware Layer"]
-        TIMER["Timer1 ISR<br/>CTC @ 100Hz"]
+        TIMER["Timer1 ISR<br/>CTC @ 1Hz"]
         SCHED["Task Scheduler<br/>Flag Polling"]
         CLOCK["Clock Module<br/>HH:MM:SS"]
         BTNDRV["Button Driver<br/>Debounce + Read"]
@@ -104,17 +104,16 @@ graph TB
 
 | Component | Specification | Quantity |
 |-----------|--------------|----------|
-| ATmega32 Microcontroller | PDIP-40 package | 1 |
-| Crystal Oscillator | 8 MHz, HC49 package | 1 |
-| Load Capacitors | 22 pF ceramic | 2 |
-| LEDs | 5mm, any color (Status + Task) | 2 |
-| Current Limiting Resistors | 330Ω, ¼W | 2 |
-| Tactile Push Buttons | 6mm, normally open | 3 |
-| Decoupling Capacitor | 100 nF ceramic | 1 |
-| Reset Pull-up Resistor | 10 kΩ | 1 |
-| Reset Capacitor | 100 nF ceramic | 1 |
+| ATmega32 Microcontroller | PDIP-40 package (U1) | 1 |
+| Crystal Oscillator | 8 MHz, HC49-U Vertical (Y1) | 1 |
+| Load Capacitors | 22 pF ceramic (C3, C4) | 2 |
+| Decoupling Capacitors | 100 nF ceramic (C1 VCC, C2 AVCC, C5 AREF) | 3 |
+| LEDs | 5mm, any color (D1 Task, D2 Status) | 2 |
+| LED Current Limiting Resistors | 220Ω, ¼W (R3, R5) | 2 |
+| Button Pull-up Resistors | 10 kΩ (R1 Reset, R2 SET, R4 INC, R6 RESET_CLK) | 4 |
+| Tactile Push Buttons | 6mm, normally open (SW1 Reset, SW2 SET, SW3 INC, SW4 CLOCK_RESET) | 4 |
+| USART Connector | 1×3 pin header 2.54mm (J1: GND, TXD, RXD) | 1 |
 | USB-to-UART Adapter | FTDI/CH340/CP2102 (3.3V/5V) | 1 |
-| ISP Programmer | USBasp / AVRISP mkII / Arduino as ISP | 1 |
 | Breadboard or PCB | Standard breadboard or custom PCB | 1 |
 | Power Supply | 5V DC regulated | 1 |
 | Jumper Wires | Male-to-male, assorted | As needed |
@@ -124,30 +123,31 @@ graph TB
 ```
                         +----[VCC 5V]----+
                         |                |
-                   [10kΩ]R1         [100nF]C3
+                   [10kΩ]R1         [100nF]C1 (VCC decoupling)
                         |                |
-          +-------------+---[RESET]------+---[GND]
+          +----[SW1]----+---[RESET]------+---[GND]
           |
     +-----+-----+
     |  ATmega32  |
     |            |
-    | PA0 (40)---+---[SET BTN]---[GND]       (Internal Pull-up)
-    | PA1 (39)---+---[INC BTN]---[GND]       (Internal Pull-up)
-    | PA2 (38)---+---[RST BTN]---[GND]       (Internal Pull-up)
+    | PA0 (40)---+---[10kΩ R2]---[VCC]   [SW2 SET]---[GND]
+    | PA1 (39)---+---[10kΩ R4]---[VCC]   [SW3 INC]---[GND]
+    | PA2 (38)---+---[10kΩ R6]---[VCC]   [SW4 RST]---[GND]
     |            |
-    | PB0 (1)----+---[330Ω]---[LED_STATUS]---[GND]
-    | PB1 (2)----+---[330Ω]---[LED_TASK]-----[GND]
+    | PB0 (1)----+---[220Ω R5]---[LED D2 STATUS]---[GND]
+    | PB1 (2)----+---[220Ω R3]---[LED D1 TASK]-----[GND]
     |            |
-    | PD0 (14)---+---[RXD from UART Adapter]
-    | PD1 (15)---+---[TXD to UART Adapter]
+    | PD0 (14)---+---[J1 Pin3 RXD]
+    | PD1 (15)---+---[J1 Pin2 TXD]       J1 Pin1 = GND
     |            |
-    | XTAL1(13)--+---[8MHz XTAL]---+---[22pF]---[GND]
-    | XTAL2(12)--+---[8MHz XTAL]---+---[22pF]---[GND]
+    | XTAL1(13)--+---[8MHz Y1]---+---[22pF C3]---[GND]
+    | XTAL2(12)--+---[8MHz Y1]---+---[22pF C4]---[GND]
     |            |
-    | VCC (10)---+---[5V]    [100nF]---[GND]
+    | VCC (10)---+---[5V]    [100nF C1]---[GND]
     | GND (11)---+---[GND]
-    | AVCC(30)---+---[5V]
-    | AGND(31)---+---[GND]
+    | AVCC(30)---+---[5V]    [100nF C2]---[GND]
+    | AREF(32)---+---[100nF C5]---[GND]
+    | GND (31)---+---[GND]
     +------------+
 ```
 
@@ -187,15 +187,12 @@ Download and install [WinAVR](http://winavr.sourceforge.net/) or use the [Microc
 
 | Pin # | Port/Pin | Function | Direction | Configuration | Description |
 |-------|----------|----------|-----------|---------------|-------------|
-| 40 | PA0 | SET_BTN | Input | Internal Pull-up | Enter time-set mode / cycle fields |
-| 39 | PA1 | INC_BTN | Input | Internal Pull-up | Increment selected time field |
-| 38 | PA2 | CLOCK_RESET | Input | Internal Pull-up | Reset clock to 00:00:00 |
-| 1 | PB0 | LED_STATUS | Output | Active High | Status heartbeat LED (2s toggle) |
-| 2 | PB1 | LED_TASK | Output | Active High | Task indicator LED (5s flash) |
-| 6 | PB5 | MOSI | — | ISP Programming | SPI Master Out Slave In |
-| 7 | PB6 | MISO | — | ISP Programming | SPI Master In Slave Out |
-| 8 | PB7 | SCK | — | ISP Programming | SPI Clock |
-| 9 | RESET | RESET | Input | External Pull-up (10kΩ) | Hardware reset with RC filter |
+| 40 | PA0 | SET_BTN | Input | External 10kΩ Pull-up (R2) | Enter time-set mode / cycle fields |
+| 39 | PA1 | INC_BTN | Input | External 10kΩ Pull-up (R4) | Increment selected time field |
+| 38 | PA2 | CLOCK_RESET | Input | External 10kΩ Pull-up (R6) | Reset clock to 00:00:00 |
+| 1 | PB0 | LED_STATUS | Output | Active High, 220Ω (R5) | Status heartbeat LED (2s toggle) |
+| 2 | PB1 | LED_TASK | Output | Active High, 220Ω (R3) | Task indicator LED (5s flash) |
+| 9 | ~RESET | RESET | Input | External 10kΩ Pull-up (R1) | Hardware reset (SW1) |
 | 10 | VCC | Power | — | +5V DC | Digital supply voltage |
 | 11 | GND | Ground | — | 0V | Digital ground |
 | 12 | XTAL2 | Crystal | — | 8 MHz + 22pF cap | Crystal oscillator output |

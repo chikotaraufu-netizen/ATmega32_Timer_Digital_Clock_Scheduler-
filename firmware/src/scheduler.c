@@ -1,16 +1,16 @@
 /**
  * @file scheduler.c
- * @brief Cooperative periodic task scheduler driven by 10 ms ticks
+ * @brief Cooperative periodic task scheduler driven by 1 s ticks
  *
  * Periodic tasks managed:
  *
  *   1. STATUS LED (PB0) – toggled every 2 seconds.
  *   2. TASK LED   (PB1) – turned ON every 5 seconds for a 1-second flash,
  *                          then turned OFF.
- *   3. EXTENSION TASK   – 500 ms heartbeat task over USART.
+ *   3. EXTENSION TASK   – 10 s periodic task over USART.
  *
  * Architecture:
- *   scheduler_tick()  is called once per 10 ms interrupt-flag from the
+ *   scheduler_tick()  is called once per 1 s interrupt-flag from the
  *                     main loop.  It increments per-task counters and
  *                     sets boolean flags when an action is due.
  *
@@ -29,16 +29,16 @@
 
 /* ---- Internal state ---- */
 
-/** 10ms-resolution counter for the status LED task. */
+/** 1s-resolution counter for the status LED task. */
 static uint16_t g_status_counter = 0;
 
-/** 10ms-resolution counter for the task LED task. */
+/** 1s-resolution counter for the task LED task. */
 static uint16_t g_task_counter = 0;
 
 /** Counter tracking how long the task LED has been ON (0 = OFF). */
 static uint16_t g_task_led_on_counter = 0;
 
-/** 10ms-resolution counter for the extension task (500 ms). */
+/** 1s-resolution counter for the extension task (10 s). */
 static uint16_t g_ext_counter = 0;
 
 /** Flag: set when it is time to toggle the status LED. */
@@ -50,7 +50,7 @@ static volatile bool g_flag_task_led_on = false;
 /** Flag: set when the task LED flash duration has elapsed. */
 static volatile bool g_flag_task_led_off = false;
 
-/** Flag: set when the 500ms extension task should run. */
+/** Flag: set when the 10s extension task should run. */
 static volatile bool g_flag_ext_task = false;
 
 /* ================================================================== */
@@ -96,7 +96,7 @@ void scheduler_tick(void)
         g_task_led_on_counter = 0;  /* Reset on-duration counter */
     }
 
-    /* ---- Extension Task counter (500 ms) ---- */
+    /* ---- Extension Task counter (10 s) ---- */
     g_ext_counter++;
     if (g_ext_counter >= SCHED_EXT_TASK_TICKS) {
         g_ext_counter = 0;
@@ -137,9 +137,9 @@ void scheduler_run(void)
         LED_PORT &= ~(1 << LED_TASK);   /* Turn OFF */
     }
 
-    /* ---- Extension Task: 500ms heartbeat ---- */
+    /* ---- Extension Task: 10s periodic ---- */
     if (g_flag_ext_task) {
         g_flag_ext_task = false;
-        display_message("[500ms Tick] Ext Task");
+        display_message("[10s Tick] Ext Task");
     }
 }
