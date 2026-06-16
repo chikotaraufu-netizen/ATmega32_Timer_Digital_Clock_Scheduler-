@@ -33,6 +33,7 @@ PORT       = usb
 SRCDIR     = src
 INCDIR     = include
 BUILDDIR   = build
+HEXDIR     = hex
 
 # ---- Source and object files ----
 SOURCES    = $(wildcard $(SRCDIR)/*.c)
@@ -41,7 +42,7 @@ OBJECTS    = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SOURCES))
 # ---- Output files ----
 TARGET     = $(BUILDDIR)/clock
 ELF        = $(TARGET).elf
-HEX        = $(TARGET).hex
+HEX        = $(HEXDIR)/main.hex
 MAP        = $(TARGET).map
 LSS        = $(TARGET).lss
 
@@ -84,6 +85,9 @@ all: $(HEX) size
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
 
+$(HEXDIR):
+	mkdir -p $(HEXDIR)
+
 ## Compile .c → .o
 $(BUILDDIR)/%.o: $(SRCDIR)/%.c | $(BUILDDIR)
 	@echo "  CC    $<"
@@ -95,7 +99,7 @@ $(ELF): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@
 
 ## Convert .elf → .hex (Intel HEX format, flash section only)
-$(HEX): $(ELF)
+$(HEX): $(ELF) | $(HEXDIR)
 	@echo "  HEX   $@"
 	$(OBJCOPY) -O ihex -R .eeprom $< $@
 

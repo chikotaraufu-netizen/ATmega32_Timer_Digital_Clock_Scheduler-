@@ -409,46 +409,45 @@ UBRR = 51
 
 ```mermaid
 flowchart TD
-    START(["Button Read"]) --> READ_PIN["Read PINA register"]
-    READ_PIN --> CHECK_SET{"PA0 LOW?<br/>(SET pressed)"}
+    START(["Button Scan (Non-blocking)"]) --> READ_PIN["Read raw state from PINA"]
+    READ_PIN --> CHECK_STABLE{"raw ==<br/>g_last_stable?"}
 
-    CHECK_SET -->|Yes| DEBOUNCE_SET["Wait 20ms<br/>(debounce delay)"]
-    DEBOUNCE_SET --> RECHECK_SET{"PA0 still LOW?"}
-    RECHECK_SET -->|Yes| SET_ACTION["Execute SET action"]
-    RECHECK_SET -->|No| CHECK_INC
-    CHECK_SET -->|No| CHECK_INC
+    CHECK_STABLE -->|Yes| INC_CNT["g_debounce_cnt++"]
+    CHECK_STABLE -->|No| RESET_CNT["g_debounce_cnt = 0<br/>g_last_stable = raw"]
 
-    SET_ACTION --> WAIT_RELEASE_S{"PA0 HIGH?<br/>(released)"}
-    WAIT_RELEASE_S -->|No| WAIT_RELEASE_S
-    WAIT_RELEASE_S -->|Yes| CHECK_INC
-
-    CHECK_INC{"PA1 LOW?<br/>(INC pressed)"} -->|Yes| DEBOUNCE_INC["Wait 20ms"]
-    DEBOUNCE_INC --> RECHECK_INC{"PA1 still LOW?"}
-    RECHECK_INC -->|Yes| INC_ACTION["Execute INC action"]
-    RECHECK_INC -->|No| CHECK_RST
-    CHECK_INC -->|No| CHECK_RST
-
-    INC_ACTION --> WAIT_RELEASE_I{"PA1 HIGH?"}
-    WAIT_RELEASE_I -->|No| WAIT_RELEASE_I
-    WAIT_RELEASE_I -->|Yes| CHECK_RST
-
-    CHECK_RST{"PA2 LOW?<br/>(RESET pressed)"} -->|Yes| DEBOUNCE_RST["Wait 20ms"]
-    DEBOUNCE_RST --> RECHECK_RST{"PA2 still LOW?"}
-    RECHECK_RST -->|Yes| RST_ACTION["Execute RESET action<br/>h=0, m=0, s=0"]
-    RECHECK_RST -->|No| DONE
-    CHECK_RST -->|No| DONE
-
-    RST_ACTION --> WAIT_RELEASE_R{"PA2 HIGH?"}
-    WAIT_RELEASE_R -->|No| WAIT_RELEASE_R
-    WAIT_RELEASE_R -->|Yes| DONE
+    INC_CNT --> CHECK_THRESH{"g_debounce_cnt<br/>== 5?"}
+    CHECK_THRESH -->|Yes| EDGE_DETECT["Detect falling edges<br/>(pressed events)"]
+    CHECK_THRESH -->|No| DONE
+    
+    RESET_CNT --> DONE
+    
+    EDGE_DETECT --> SET_EVENT_SET{"SET pressed?"}
+    SET_EVENT_SET -->|Yes| QUEUE_SET["Queue BTN_SET event"]
+    SET_EVENT_SET -->|No| SET_EVENT_INC
+    
+    QUEUE_SET --> SET_EVENT_INC
+    
+    SET_EVENT_INC{"INC pressed?"}
+    SET_EVENT_INC -->|Yes| QUEUE_INC["Queue BTN_INC event"]
+    SET_EVENT_INC -->|No| SET_EVENT_RST
+    
+    QUEUE_INC --> SET_EVENT_RST
+    
+    SET_EVENT_RST{"RESET pressed?"}
+    SET_EVENT_RST -->|Yes| QUEUE_RST["Queue BTN_RESET event"]
+    SET_EVENT_RST -->|No| UPDATE_STATE
+    
+    QUEUE_RST --> UPDATE_STATE
+    
+    UPDATE_STATE["g_debounced_state = raw"] --> DONE
 
     DONE(["Return to Main Loop"])
 
     style START fill:#9c27b0,color:#fff
     style DONE fill:#9c27b0,color:#fff
-    style SET_ACTION fill:#e8f5e9,stroke:#2e7d32
-    style INC_ACTION fill:#e8f5e9,stroke:#2e7d32
-    style RST_ACTION fill:#ffcdd2,stroke:#c62828
+    style QUEUE_SET fill:#e8f5e9,stroke:#2e7d32
+    style QUEUE_INC fill:#e8f5e9,stroke:#2e7d32
+    style QUEUE_RST fill:#ffcdd2,stroke:#c62828
 ```
 
 ---

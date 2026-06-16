@@ -281,14 +281,19 @@ After programming and connecting the serial terminal, you should see:
   Timer1 CTC Mode | 8MHz Crystal
 =====================================
 
-[CLOCK] 00:00:00
-[CLOCK] 00:00:01
-[CLOCK] 00:00:02
-[LED]   Status LED toggled
-[CLOCK] 00:00:03
-[CLOCK] 00:00:04
-[CLOCK] 00:00:05
-[LED]   Task LED flashed
+TIME: 00:00:00
+[500ms Tick] Ext Task
+TIME: 00:00:01
+[500ms Tick] Ext Task
+TIME: 00:00:02
+[500ms Tick] Ext Task
+TIME: 00:00:03
+[500ms Tick] Ext Task
+TIME: 00:00:04
+[500ms Tick] Ext Task
+TIME: 00:00:05
+TASK: SENSOR SAMPLE
+[500ms Tick] Ext Task
 ...
 ```
 

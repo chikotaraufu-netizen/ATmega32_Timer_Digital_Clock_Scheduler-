@@ -451,19 +451,19 @@ These tests verify boundary conditions and edge cases.
 
 > *Screenshot placeholder: Terminal showing 00:00:59 → 00:01:00 transition*
 
-![Minute Rollover](screenshots/test_minute_rollover.png)
+
 
 ### Serial Output — Midnight Rollover
 
 > *Screenshot placeholder: Terminal showing 23:59:59 → 00:00:00 transition*
 
-![Midnight Rollover](screenshots/test_midnight_rollover.png)
+
 
 ### LED Timing Verification
 
 > *Screenshot placeholder: Oscilloscope capture showing LED toggle/flash timing*
 
-![LED Timing](screenshots/test_led_timing.png)
+
 
 ### Scheduled LED Tasks Screenshot
 
@@ -473,7 +473,7 @@ These tests verify boundary conditions and edge cases.
 
 > *Screenshot placeholder: Serial output showing time-set mode entry and field cycling*
 
-![Button Test](screenshots/test_button_response.png)
+
 
 ---
 

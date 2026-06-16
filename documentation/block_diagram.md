@@ -168,10 +168,10 @@ graph TB
     end
 
     subgraph MODULE_LAYER["Module Layer"]
-        CLOCK["clock.c/.h<br/>HH:MM:SS Logic<br/>Inc/Set/Reset"]
+        CLOCK["timer.c/.h<br/>Timer & Clock<br/>Functions"]
         BTNMOD["buttons.c/.h<br/>Read & Debounce<br/>Active-Low Logic"]
-        LEDMOD["leds.c/.h<br/>Toggle & Flash<br/>Control"]
-        UARTMOD["usart.c/.h<br/>9600 8N1<br/>TX String/Char"]
+        LEDMOD["scheduler.c<br/>Toggle & Flash<br/>Control"]
+        UARTMOD["display.c/.h<br/>9600 8N1<br/>TX String/Char"]
     end
 
     subgraph DRIVER_LAYER["Hardware Abstraction"]
@@ -325,7 +325,7 @@ sequenceDiagram
 
 ```
 8 MHz Crystal → XTAL1/XTAL2 → System Clock (clk_IO)
-    → Prescaler (/64) → Timer1 Clock (1249.5 Hz)
+    → Prescaler (/64) → Timer1 Clock (125,000 Hz)
     → TCNT1 counts 0→1249 → Compare Match
     → OCF1A Flag → ISR → tick_flag
     → Main Loop → Clock Module → USART TX → Terminal
