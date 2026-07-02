@@ -2,7 +2,8 @@
  * @file buttons.h
  * @brief Debounced button driver for SET, INCREMENT, and RESET
  *
- * Three buttons on PORTA with internal pull-ups.  Buttons are active-low
+ * Three buttons on PORTA with external 10kΩ pull-up resistors (internal
+ * pull-ups also enabled in firmware for safety).  Buttons are active-low
  * (pressed = logic 0).  Debouncing uses a fully non-blocking, tick-based
  * approach with edge detection (reports press only on falling edge).
  */
@@ -28,7 +29,12 @@ typedef enum {
 void buttons_init(void);
 
 /**
- * @brief  Periodic tick for non-blocking debounce (call every 10ms).
+ * @brief  Periodic tick for non-blocking debounce.
+ *
+ * Called on every main-loop iteration for responsive edge detection.
+ * SimulIDE push buttons are ideal (no bounce), so high-frequency
+ * polling is safe.  On real hardware, consider adding a counter-based
+ * debounce window if needed.
  */
 void buttons_tick(void);
 

@@ -1,10 +1,10 @@
 /**
  * @file timer.h
- * @brief Timer1 CTC mode driver – 100 Hz timekeeping for the digital clock
+ * @brief Timer1 CTC mode driver – 1 Hz timekeeping for the digital clock
  *
  * Provides:
- *  - Timer1 initialisation in CTC mode (prescaler 64, OCR1A=1249)
- *  - A volatile tick flag set by the ISR every 10 ms
+ *  - Timer1 initialisation in CTC mode (prescaler 1024, OCR1A=7812)
+ *  - A volatile tick flag set by the ISR every 1 s
  *  - Clock time structure and accessor/mutator functions
  */
 
@@ -22,20 +22,20 @@ typedef struct {
 } clock_time_t;
 
 /**
- * @brief  Initialise Timer1 in CTC mode for a 100 Hz interrupt.
+ * @brief  Initialise Timer1 in CTC mode for a 1 Hz interrupt.
  *
  * Configures OCR1A, enables the Output Compare A Match interrupt,
- * and starts the timer with prescaler 64.  Global interrupts must
+ * and starts the timer with prescaler 1024.  Global interrupts must
  * be enabled separately via sei().
  */
 void timer1_init(void);
 
 /**
- * @brief  Check whether a 10 ms tick has occurred.
+ * @brief  Check whether a 1 s tick has occurred.
  * @return true  if the ISR has signalled a new tick (flag is cleared).
  * @return false if no tick has occurred since the last check.
  *
- * This is the main loop's non-blocking way of detecting elapsed 10 ms ticks.
+ * This is the main loop's non-blocking way of detecting elapsed 1 s ticks.
  */
 bool timer1_tick_pending(void);
 

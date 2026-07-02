@@ -7,15 +7,15 @@
  * super-loop that:
  *
  *   1. Checks for a 1 s (1 Hz) tick from Timer1 (ISR-set flag).
- *   2. On each 1 s tick: advances the clock, scheduler, and buttons.
+ *   2. On each 1 s tick: advances the clock and scheduler.
  *   3. Updates the display every second.
  *   4. Runs any pending scheduled tasks (LED toggling/flashing).
  *   5. Polls buttons and handles time-set mode.
  *
  * Design notes:
  *   - The ISR (timer.c) only sets a flag – all work happens here.
- *   - The main loop never blocks (except the brief debounce delay
- *     inside buttons_read when a press is detected).
+ *   - The main loop never blocks (except the brief USART waits
+ *     inside display functions).
  *   - Time-set mode cycles through fields: HOURS → MINUTES → SECONDS
  *     → NORMAL.  Each press of SET advances the mode; INC increments
  *     the selected field.
@@ -81,7 +81,7 @@ int main(void)
         /* ---- 1. Check for 1 s (1 Hz) tick ---- */
         if (timer1_tick_pending()) {
 
-            /* Advance the task scheduler and buttons every 1 s */
+            /* Advance the task scheduler every 1 s */
             scheduler_tick();
             buttons_tick();
 
